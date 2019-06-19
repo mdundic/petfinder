@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./docker
+    container_name: "petfinder-web"
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+
+  postgres:
+    image: postgres:11.3
+    container_name: "petfinder-postgres"
+    environment:
+      POSTGRES_PASSWORD: "dbpass"
+    volumes:
+      - .data/postgres:/var/lib/postgresql/data
