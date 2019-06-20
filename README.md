@@ -43,6 +43,11 @@ Install composer dependencies
 $ docker exec -it petfinder-web composer install
 ```
 
+Create the database
+```
+$ docker exec -it petfinder-postgres psql -U postgres -c  "CREATE DATABASE petfinder"
+```
+
 Run laravel migration
 ```
 $ docker exec -it petfinder-web php artisan migrate
