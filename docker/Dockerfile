@@ -18,7 +18,8 @@ RUN apt-get update && \
         php7.3-mysql \
         php7.3-mbstring \
         php7.3-xml \
-        php7.3-zip && \
+        php7.3-zip \
+        php7.3-pgsql && \
         rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | \
