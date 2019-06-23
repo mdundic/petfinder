@@ -53,6 +53,11 @@ Run laravel migration
 $ docker exec -it petfinder-web php artisan migrate
 ```
 
+Generate key for .env file
+```
+$ php artisan key:generate
+```
+
 ## Usage
 
 Access the laravel app on your local machine
