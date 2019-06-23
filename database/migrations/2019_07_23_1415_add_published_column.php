@@ -23,8 +23,8 @@ SQL;
     public function down()
     {
         $statement = <<<'SQL'
-        ALTER TABLE lost_pets DROP COLUMN published;
-        ALTER TABLE found_pets DROP COLUMN published;
+            ALTER TABLE lost_pets DROP COLUMN published;
+            ALTER TABLE found_pets DROP COLUMN published;
 SQL;
 
         DB::unprepared($statement);
