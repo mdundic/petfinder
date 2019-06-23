@@ -7,7 +7,13 @@ class Location
     const BELGRADE = 'belgrade';
     const PANCEVO = 'pancevo';
 
-    public static function getAll() {
+    /**
+     * Get array with locations.
+     *
+     * @return array
+     */
+    public static function getAll() : array
+    {
         return [
             self::BELGRADE,
             self::PANCEVO

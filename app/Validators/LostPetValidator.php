@@ -12,13 +12,12 @@ use App\Rules\AlphaWithSpaces;
 class LostPetValidator
 {
     /**
-     * Validate user
+     * Validate request data when adding lost pet.
      *
      * @param Request $request
-     *
-     * @return null
+     * @return void
      */
-    public function validateLostPet(Request $request)
+    public function validateAdd(Request $request)
     {
         $request->validate([
             'name' => [
@@ -34,7 +33,25 @@ class LostPetValidator
             'picture'  => 'required|string',
             'color'  => 'required|in:' . implode(',', PetColor::getAll()),
             'location'  => 'required|in:' . implode(',', Location::getAll()),
+            'lost_at'  => 'required|date_format:Y-m-d|before:today',
             'description'  => 'string'
+        ]);
+    }
+
+    /**
+     * Validate request data when searching lost pet.
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function validateSearch(Request $request)
+    {
+        $request->validate([
+            'type' => 'in:' . implode(',', PetType::getAll()),
+            'size' => 'in:' . implode(',', PetSize::getAll()),
+            'color'  => 'in:' . implode(',', PetColor::getAll()),
+            'location'  => 'in:' . implode(',', Location::getAll()),
+            'found_at'  => 'date_format:Y-m-d|before:today',
         ]);
     }
 }

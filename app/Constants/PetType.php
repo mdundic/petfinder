@@ -7,7 +7,13 @@ class PetType
     const CAT = 'cat';
     const DOG = 'dog';
 
-    public static function getAll() {
+    /**
+     * Get array with pet types.
+     *
+     * @return array
+     */
+    public static function getAll() : array
+    {
         return [
             self::CAT,
             self::DOG,

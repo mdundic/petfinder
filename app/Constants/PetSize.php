@@ -8,7 +8,13 @@ class PetSize
     const MEDIUM = 'medium';
     const LARGE = 'large';
 
-    public static function getAll() {
+    /**
+     * Get array with pet sizes.
+     *
+     * @return array
+     */
+    public static function getAll() : array
+    {
         return [
             self::SMALL,
             self::MEDIUM,

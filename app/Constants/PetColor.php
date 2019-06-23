@@ -9,7 +9,13 @@ class PetColor
     const GRAY = 'gray';
     const BROWN = 'brown';
 
-    public static function getAll() {
+    /**
+     * Get array with pet colors.
+     *
+     * @return void
+     */
+    public static function getAll() : array
+    {
         return [
             self::BLACK,
             self::WHITE,
