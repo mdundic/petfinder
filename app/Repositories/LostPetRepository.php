@@ -24,7 +24,7 @@ class LostPetRepository
      * @param array $data
      * @return void
      */
-    public function add(array $data)
+    public function add(array $data) : void
     {
         $this->lostPet->name = $data['name'];
         $this->lostPet->type = $data['type'];

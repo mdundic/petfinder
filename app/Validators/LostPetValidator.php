@@ -17,7 +17,7 @@ class LostPetValidator
      * @param Request $request
      * @return void
      */
-    public function validateAdd(Request $request)
+    public function validateAdd(Request $request) : void
     {
         $request->validate([
             'name' => [
@@ -44,7 +44,7 @@ class LostPetValidator
      * @param Request $request
      * @return void
      */
-    public function validateSearch(Request $request)
+    public function validateSearch(Request $request) : void
     {
         $request->validate([
             'type' => 'in:' . implode(',', PetType::getAll()),
