@@ -10,8 +10,8 @@ class AddPublishedColumn extends Migration
     public function up()
     {
         $statement = <<<'SQL'
-            ALTER TABLE lost_pets ADD COLUMN published boolean NOT NULL DEFAULT false;
-            ALTER TABLE found_pets ADD COLUMN published boolean NOT NULL DEFAULT false;
+            ALTER TABLE lost_pets ADD COLUMN is_published boolean NOT NULL DEFAULT false;
+            ALTER TABLE found_pets ADD COLUMN is_published boolean NOT NULL DEFAULT false;
 SQL;
 
         DB::unprepared($statement);
@@ -23,8 +23,8 @@ SQL;
     public function down()
     {
         $statement = <<<'SQL'
-            ALTER TABLE lost_pets DROP COLUMN published;
-            ALTER TABLE found_pets DROP COLUMN published;
+            ALTER TABLE lost_pets DROP COLUMN is_published;
+            ALTER TABLE found_pets DROP COLUMN is_published;
 SQL;
 
         DB::unprepared($statement);
