@@ -22,7 +22,16 @@ class InitDb extends Migration
 
             CREATE TYPE pet_colors AS ENUM (
                 'black',
-                'white'
+                'white',
+                'gray',
+                'brown'
+            );
+
+
+            CREATE TYPE pet_sizes AS ENUM (
+                'small',
+                'medium',
+                'big'
             );
 
             CREATE TYPE locations AS ENUM (
@@ -59,6 +68,7 @@ class InitDb extends Migration
                 picture text NOT NULL,
                 location locations NOT NULL,
                 color pet_colors NOT NULL,
+                size pet_sizes NOT NULL,
                 description text CHECK(trim(description) <> ''),
                 is_found boolean NOT NULL DEFAULT false,
                 user_id integer NOT NULL REFERENCES users(id),
@@ -76,6 +86,7 @@ class InitDb extends Migration
                 picture text NOT NULL,
                 location locations NOT NULL,
                 color pet_colors NOT NULL,
+                size pet_sizes NOT NULL,
                 description text CHECK(trim(description) <> ''),
                 is_returned boolean NOT NULL DEFAULT false,
                 user_id integer NOT NULL REFERENCES users(id),
@@ -97,7 +108,7 @@ SQL;
     {
         $statement = <<<'SQL'
             DROP table admin_users, users, lost_pets, found_pets;
-            DROP TYPE admin_user_roles, pet_types, pet_colors, locations;
+            DROP TYPE admin_user_roles, pet_types, pet_colors, pet_sizes, locations;
 SQL;
 
         DB::unprepared($statement);
