@@ -40,12 +40,7 @@ class LostPetController extends Controller
     {
         $this->validator->validateAdd($request);
 
-        $this->lostPetRepository->add(
-            array_merge(
-                $request->all(),
-                ['user_id' => '1'] //@TODO change when create users and login session
-            )
-        );
+        $this->lostPetRepository->add($request->all());
 
         return response(null, 201);
     }
@@ -60,9 +55,7 @@ class LostPetController extends Controller
     {
         $this->validator->validateSearch($request);
 
-        return $this->lostPetRepository->search(
-            $request->all()
-        );
+        return $this->lostPetRepository->search($request->all());
     }
 
     /**

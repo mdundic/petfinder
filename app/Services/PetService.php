@@ -34,6 +34,11 @@ class PetService
             throw new PetAlreadyFoundException;
         }
 
+        // @TODO change when create users and login session
+        if($pet->user_id != 1) {
+            throw new PetDoesntBelongToUserException;
+        }
+
         $this->lostPetRepository->found($pet);
     }
 }

@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\LostPet;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Faker\Provider\tr_TR\DateTime;
 
 class LostPetRepository
 {
@@ -36,7 +35,7 @@ class LostPetRepository
         $this->lostPet->size = $data['size'];
         $this->lostPet->description = $data['description'];
         $this->lostPet->lost_at = $data['lost_at'];
-        $this->lostPet->user_id = $data['user_id'];
+        $this->lostPet->user_id = 1; // @TODO change when create users and login session
 
         $this->lostPet->save();
     }
