@@ -30,7 +30,7 @@ class LostPetValidator
                 'required',
                 new AlphaWithSpaces
             ],
-            'picture'  => 'required|string',
+            'picture'  => 'required|image|max:10000',
             'color'  => 'required|in:' . implode(',', PetColor::getAll()),
             'location'  => 'required|in:' . implode(',', Location::getAll()),
             'lost_at'  => 'required|date_format:Y-m-d|before:today',
