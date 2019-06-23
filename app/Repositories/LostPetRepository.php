@@ -35,7 +35,7 @@ class LostPetRepository
         $this->lostPet->size = $data['size'];
         $this->lostPet->description = $data['description'];
         $this->lostPet->lost_at = $data['lost_at'];
-        $this->lostPet->user_id = $data['user_id'];
+        $this->lostPet->user_id = 1; // @TODO change when create users and login session
 
         $this->lostPet->save();
     }
@@ -48,7 +48,9 @@ class LostPetRepository
      */
     public function search(array $searchParams) : LengthAwarePaginator
     {
-        $query = $this->lostPet->query();
+        $query = $this->lostPet->query()
+            ->where('is_found', false)
+            ->where('is_published', true);
 
         if (isset($searchParams['type'])) {
             $query->where('type', '=', $searchParams['type']);
@@ -71,5 +73,30 @@ class LostPetRepository
         }
 
         return $query->orderBy('lost_at','desc')->paginate(config('search.resultsPerPage'));
+    }
+
+    /**
+     * Get lost pet by id.
+     *
+     * @param integer $id
+     * @return LostPet
+     */
+    public function get(int $id) : LostPet
+    {
+        return $this->lostPet->findOrFail($id);
+    }
+
+    /**
+     * Found lost pet.
+     *
+     * @param LostPet $lostPet
+     * @return void
+     */
+    public function found(LostPet $lostPet) : void
+    {
+        $lostPet->is_found = true;
+        $lostPet->found_at = 'now()';
+
+        $lostPet->save();
     }
 }
