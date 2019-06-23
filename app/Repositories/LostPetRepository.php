@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\LostPet;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Faker\Provider\tr_TR\DateTime;
 
 class LostPetRepository
 {
@@ -48,7 +49,9 @@ class LostPetRepository
      */
     public function search(array $searchParams) : LengthAwarePaginator
     {
-        $query = $this->lostPet->query();
+        $query = $this->lostPet->query()
+            ->where('is_found', false)
+            ->where('is_published', true);
 
         if (isset($searchParams['type'])) {
             $query->where('type', '=', $searchParams['type']);
@@ -71,5 +74,30 @@ class LostPetRepository
         }
 
         return $query->orderBy('lost_at','desc')->paginate(config('search.resultsPerPage'));
+    }
+
+    /**
+     * Get lost pet by id.
+     *
+     * @param integer $id
+     * @return LostPet
+     */
+    public function get(int $id) : LostPet
+    {
+        return $this->lostPet->findOrFail($id);
+    }
+
+    /**
+     * Found lost pet.
+     *
+     * @param LostPet $lostPet
+     * @return void
+     */
+    public function found(LostPet $lostPet) : void
+    {
+        $lostPet->is_found = true;
+        $lostPet->found_at = 'now()';
+
+        $lostPet->save();
     }
 }

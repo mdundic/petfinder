@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Validators\LostPetValidator;
 use App\Repositories\LostPetRepository;
+use App\Services\PetService;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -12,16 +13,21 @@ class LostPetController extends Controller
 {
     protected $validator;
     protected $lostPetRepository;
+    protected $petService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(LostPetValidator $validator, LostPetRepository $lostPetRepository)
-    {
+    public function __construct(
+        LostPetValidator $validator,
+        LostPetRepository $lostPetRepository,
+        PetService $petService
+    ) {
         $this->validator = $validator;
         $this->lostPetRepository = $lostPetRepository;
+        $this->petService = $petService;
     }
 
     /**
@@ -37,7 +43,7 @@ class LostPetController extends Controller
         $this->lostPetRepository->add(
             array_merge(
                 $request->all(),
-                ['user_id' => '1'] //@TODO change with logged user
+                ['user_id' => '1'] //@TODO change when create users and login session
             )
         );
 
@@ -57,5 +63,18 @@ class LostPetController extends Controller
         return $this->lostPetRepository->search(
             $request->all()
         );
+    }
+
+    /**
+     * Found lost pet.
+     *
+     * @param integer $id
+     * @return Response
+     */
+    public function found(int $id) : Response
+    {
+        $this->petService->foundLostPet($id);
+
+        return response(null, 204);
     }
 }
