@@ -27,7 +27,6 @@ class InitDb extends Migration
                 'brown'
             );
 
-
             CREATE TYPE pet_sizes AS ENUM (
                 'small',
                 'medium',
