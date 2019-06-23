@@ -30,7 +30,7 @@ class InitDb extends Migration
             CREATE TYPE pet_sizes AS ENUM (
                 'small',
                 'medium',
-                'big'
+                'large'
             );
 
             CREATE TYPE locations AS ENUM (
