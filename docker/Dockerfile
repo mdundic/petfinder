@@ -23,7 +23,7 @@ RUN apt-get update && \
         rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/local/bin --filename=composer && \
+    php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.20 && \
     chmod +x /usr/local/bin/composer
 
 WORKDIR /var/www
