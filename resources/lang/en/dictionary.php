@@ -80,4 +80,10 @@ return [
             'send' => 'Send Message',
         ],
     ],
+    'footer' => [
+        'copyright' => 'Copyright',
+        'help_for_paws' => 'Help for paws',
+        'all_rights_reserved' => 'All rights reserved',
+        'designed_by' => 'Designed by Milica'
+    ]
 ];
