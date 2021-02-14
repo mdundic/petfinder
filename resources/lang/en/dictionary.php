@@ -35,6 +35,10 @@ return [
             'nis' => 'Nis',
             'other' => 'Other',
         ],
+        'size' => [
+            'select' => 'selectSize',
+            
+        ],
         'search' => 'Search',
     ],
     'nav' => [

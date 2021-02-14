@@ -15,6 +15,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <!-- Type -->
                         <select class="custom-select">
                             <option selected>@lang('dictionary.hero.type.select')</option>
                             <option value="dog">@lang('dictionary.hero.type.dog')</option>
@@ -24,6 +25,13 @@
                             <option value="reptile">@lang('dictionary.hero.type.reptile')</option>
                             <option value="other">@lang('dictionary.hero.type.other')</option>
                         </select>
+                        <!-- Size -->
+                        <select class="custom-select">
+                            <option selected>@lang('dictionary.hero.size.select')</option>
+                            <option value="other">@lang('dictionary.hero.size.other')</option>
+                        </select>
+                        <input type="date" id="found_at" name="found_at">
+                        <!-- Color -->
                         <select class="custom-select">
                             <option selected>@lang('dictionary.hero.color.select')</option>
                             <option value="black">@lang('dictionary.hero.color.black')</option>
@@ -35,6 +43,7 @@
                             <option value="gray">@lang('dictionary.hero.color.gray')</option>
                             <option value="gray_white">@lang('dictionary.hero.color.gray_white')</option>
                         </select>
+                        <!-- Town -->
                         <select class="custom-select">
                             <option selected>@lang('dictionary.hero.town.select')</option>
                             <option value="belgrade">@lang('dictionary.hero.town.belgrade')</option>
