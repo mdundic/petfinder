@@ -6,7 +6,7 @@
         </div>
         <div class="row" id="portfolio-wrapper">
             <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-                <a href="">
+                <a href="" data-toggle="modal" data-target="#preview-pet-details">
                     <img src="img/portfolio/app1.jpg" alt="" class="portfolio-img">
                     <div class="details">
                         <h4>Pet title</h4>
@@ -29,3 +29,4 @@
 </section>
 
 @include('layout.modals.add-found-pet')
+@include('layout.modals.preview-pet')
