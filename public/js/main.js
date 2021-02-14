@@ -129,12 +129,11 @@ jQuery(document).ready(function ($) {
 
 });
 
-<<<<<<< HEAD
 function searchLostPets() {
     var type = $('#lost_pet_types').find(":selected:enabled").val();
     var size = $('#lost_pet_sizes').find(":selected:enabled").val();
     var color = $('#lost_pet_colors').find(":selected:enabled").val();
-    var location = $('#locations').find(":selected:enabled").val();
+    var location = $('#lost_locations').find(":selected:enabled").val();
 
     includeCsrfInAjaxHeader();
 
@@ -148,35 +147,51 @@ function searchLostPets() {
             location: location
         },
         success: function(pets) {
+            $('#lost-pets-portfolio #portfolio-wrapper').html('');
+            $('#lost-pets-portfolio').removeAttr('hidden');
+            $('#lost-pets-portfolio #portfolio-no-results').attr("hidden",true);
+            $('#lost-pets-portfolio #portfolio-found').attr("hidden",true);
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#lost-pets-portfolio").offset().top
+            }, 1000);
+
+            if (jQuery.isEmptyObject(pets)) {
+                $('#lost-pets-portfolio #portfolio-no-results').removeAttr('hidden');
+
+                return;
+            }
+
             $.each(pets, function(key, pet) {
-                var box = getOnePetBox(pet.name, pet.picture, pet.description);
+                var box = getOnePetBox(pet);
 
                 $('#lost-pets-portfolio #portfolio-wrapper').prepend(box);
             });
 
-
-            // console.log(pets[data]);
-
-
-
-
-            $('#lost-pets-portfolio').removeAttr('hidden');
-
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $("#lost-pets-portfolio").offset().top
-            }, 2000);
+            $('#lost-pets-portfolio #portfolio-found').removeAttr('hidden');
         }
     });
 }
 
 // get one box with pet sumary info
-function getOnePetBox(name, picture, description) {
+function getOnePetBox(pet) {
     return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
         '<a href="">' +
-        '<img src="' + PATH.public + picture + '" alt="" class="portfolio-img">' +
-        '<div class="details">' +
-        '<h4>' + name + '</h4>' +
-        '<span>' + description + '</span>' +
+        '<img src="' + PATH.public + '/' + pet.picture + '" alt="" class="portfolio-img">' +
+        '<div class="details" id="lost-pet-' + pet.id + '-details" ' +
+        'data-name="' + pet.name + '"' +
+        'data-breed="' + pet.breed + '"' +
+        'data-color="' + pet.color + '"' +
+        'data-contact_phone="' + pet.contact_phone + '"' +
+        'data-description="' + pet.description + '"' +
+        'data-location="' + pet.location + '"' +
+        'data-lost_at="' + pet.lost_at + '"' +
+        'data-picture="' + pet.picture + '"' +
+        'data-size="' + pet.size + '"' +
+        'data-type="' + pet.type + '"' +
+        '>' +
+        '<h4>' + pet.name + '</h4>' +
+        '<span>' + pet.description + '</span>' +
         '</div>' +
         '</a>' +
         '</div>';
@@ -191,9 +206,7 @@ function includeCsrfInAjaxHeader() {
     });
 }
 
-/*  ==========================================
-    SHOW UPLOADED IMAGE
-* ========================================== */
+// SHOW UPLOADED IMAGE
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -212,9 +225,7 @@ $(function () {
     });
 });
 
-/*  ==========================================
-    SHOW UPLOADED IMAGE NAME
-* ========================================== */
+// SHOW UPLOADED IMAGE NAME
 var input = document.getElementById( 'upload' );
 var infoArea = document.getElementById( 'upload-label' );
 
@@ -223,4 +234,15 @@ function showFileName( event ) {
   var input = event.srcElement;
   var fileName = input.files[0].name;
   infoArea.textContent = 'File name: ' + fileName;
+}
+
+function resetSearch() {
+    $('#lost_pet_types').val("default");
+    $('#lost_pet_sizes').val("default");
+    $('#lost_pet_colors').val("default");
+    $('#lost_locations').val("default");
+    $('#found_pet_types').val("default");
+    $('#found_pet_sizes').val("default");
+    $('#found_pet_colors').val("default");
+    $('#found_locations').val("default");
 }

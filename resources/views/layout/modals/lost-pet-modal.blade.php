@@ -17,34 +17,34 @@
                     <div class="col-6 search-filter">
                         <!-- Type -->
                         <select class="custom-select" id='lost_pet_types'>
-                            <option selected disabled>@lang('dictionary.hero.type.select')</option>
+                            <option selected disabled value="default">@lang('dictionary.hero.type.select')</option>
                              @foreach ($pet_types as $type)
                                 <option value="{{ $type }}">@lang('dictionary.hero.type.' . $type)</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-6 search-filter" id='lost_pet_sizes'>
+                    <div class="col-6 search-filter">
                         <!-- Size -->
-                        <select class="custom-select">
-                            <option selected disabled>@lang('dictionary.hero.size.select')</option>
+                        <select class="custom-select" id='lost_pet_sizes'>
+                            <option selected disabled value="default">@lang('dictionary.hero.size.select')</option>
                             @foreach ($pet_sizes as $size)
                                 <option value="{{ $size }}">@lang('dictionary.hero.size.' . $size)</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-6 search-filter" id='lost_pet_colors'>
+                    <div class="col-6 search-filter">
                         <!-- Color -->
-                        <select class="custom-select">
-                            <option selected disabled>@lang('dictionary.hero.color.select')</option>
+                        <select class="custom-select" id='lost_pet_colors'>
+                            <option selected disabled value="default">@lang('dictionary.hero.color.select')</option>
                             @foreach ($pet_colors as $color)
                                 <option value="{{ $color }}">@lang('dictionary.hero.color.' . $color)</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-6 search-filter" id='lost_locations'>
+                    <div class="col-6 search-filter">
                         <!-- Town -->
-                        <select class="custom-select">
-                            <option selected disabled>@lang('dictionary.hero.location.select')</option>
+                        <select class="custom-select" id='lost_locations'>
+                            <option selected disabled value="default">@lang('dictionary.hero.location.select')</option>
                             @foreach ($locations as $location)
                                 <option value="{{ $location }}">@lang('dictionary.hero.location.' . $location)</option>
                             @endforeach
@@ -53,7 +53,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button"  onclick="searchLostPets();" data-dismiss="modal" class="btn btn-primary search-btn">@lang('dictionary.hero.search')</button>
+                <button type="button" onclick="resetSearch();" class="btn btn-secondary close-btn">@lang('dictionary.reset')</button>
+                <button type="button" onclick="searchLostPets();" data-dismiss="modal" class="btn btn-primary search-btn">@lang('dictionary.hero.search')</button>
             </div>
         </div>
     </div>
