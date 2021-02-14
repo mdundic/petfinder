@@ -7,10 +7,10 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong>Pronađi ljubimca</strong>. All Rights Reserved
+            &copy; @lang('dictionary.footer.copyright') <strong>@lang('dictionary.footer.help_for_paws')</strong>.@lang('dictionary.footer.all_rights_reserved')
         </div>
         <div class="credits">
-            Designed by PetFinder</a>
+            @lang('dictionary.footer.designed_by')</a>
         </div>
     </div>
 </footer>

@@ -24,7 +24,7 @@ https://docs.docker.com/v1.11/compose/install/
 
 Clone the project
 ```
-$ git clone git@github.com:mdundic/petfinder.git
+$ git clone https://github.com/mdundic/petfinder.git
 $ cd petfinder
 ```
 
@@ -55,11 +55,11 @@ $ docker exec -it petfinder-web php artisan migrate
 
 Generate key for .env file
 ```
-$ php artisan key:generate
+$ docker exec -it php artisan key:generate
 ```
 
 ## Usage
 
 Access the laravel app on your local machine
 
-http://localhost
+http://localhost:81
