@@ -146,15 +146,39 @@ function searchLostPets() {
             color: color,
             location: location
         },
-        success: function(expense) {
+        success: function(pets) {
+            $.each(pets, function(key, pet) {
+                var box = getOnePetBox(pet.name, pet.picture, pet.description);
 
-            $('#lost-pet-portfolio').show();
+                $('#lost-pets-portfolio #portfolio-wrapper').prepend(box);
+            });
+
+
+            // console.log(pets[data]);
+
+
+
+
+            $('#lost-pets-portfolio').removeAttr('hidden');
 
             $([document.documentElement, document.body]).animate({
-                scrollTop: $("#lost-pet-portfolio").offset().top
+                scrollTop: $("#lost-pets-portfolio").offset().top
             }, 2000);
         }
     });
+}
+
+// get one box with pet sumary info
+function getOnePetBox(name, picture, description) {
+    return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
+        '<a href="">' +
+        '<img src="' + picture + '" alt="" class="portfolio-img">' +
+        '<div class="details">' +
+        '<h4>' + name + '</h4>' +
+        '<span>' + description + '</span>' +
+        '</div>' +
+        '</a>' +
+        '</div>';
 }
 
 // include csrf token in ajax headers

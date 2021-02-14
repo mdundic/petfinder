@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\LostPet;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class LostPetRepository
 {
@@ -44,9 +44,9 @@ class LostPetRepository
      * Search lost pet.
      *
      * @param array $searchParams
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function search(array $searchParams) : Collection
+    public function search(array $searchParams) : LengthAwarePaginator
     {
         $query = $this->lostPet->query()
             ->where('is_found', false)
@@ -72,7 +72,7 @@ class LostPetRepository
             $query->where('lost_at', '<=', $searchParams['found_at']);
         }
 
-        return $query->orderBy('lost_at','desc')->get();
+        return $query->orderBy('lost_at','desc')->paginate(config('search.resultsPerPage'));
     }
 
     /**

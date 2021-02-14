@@ -4,8 +4,12 @@
 <main id="main">
     @include('layout.sections.hero')
 
+    @include('layout.sections.lost-pets')
+
+    @include('layout.sections.found-pets')
+
     @include('layout.sections.about')
-    
+
     @include('layout.sections.contact')
 </main>
 

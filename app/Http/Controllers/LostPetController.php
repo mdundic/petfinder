@@ -7,7 +7,7 @@ use App\Validators\LostPetValidator;
 use App\Repositories\LostPetRepository;
 use App\Services\PetService;
 use Illuminate\Http\Response;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 
 class LostPetController extends Controller
 {
@@ -40,7 +40,31 @@ class LostPetController extends Controller
     {
         $this->validator->validateAdd($request);
 
-        $this->lostPetRepository->add($request->all());
+        $params = $request->get('picture');
+
+
+
+        foreach (Car::IMAGE_NUMBERS as $i) {
+            $image = 'image_' . $i;
+
+            if (!isset($params[$image])) {
+                continue;
+            }
+
+            $fileName = $request->file($image)->store('');
+
+            $params[$image] = $fileName;
+
+            $images[] = $fileName;
+        }
+
+        try {
+            $this->lostPetRepository->add($request->all());
+        } catch (Exception $e) {
+            Storage::delete($image);
+
+            return response(null, 500);
+        }
 
         return response(null, 201);
     }
@@ -49,9 +73,9 @@ class LostPetController extends Controller
      * Search lost pet.
      *
      * @param Request $request
-     * @return LengthAwarePaginator
+     * @return Collection
      */
-    public function search(Request $request) : LengthAwarePaginator
+    public function search(Request $request) : Collection
     {
         $this->validator->validateSearch($request);
 
