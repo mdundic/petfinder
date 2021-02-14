@@ -1069,7 +1069,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin-top: 30px;
 }
 
-#found_at {
+#found_at, #lost_at {
     display: inline-block !important;
     width: 100% !important;
     height: calc(2.25rem + 2px)!important;

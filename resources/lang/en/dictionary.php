@@ -62,6 +62,11 @@ return [
         'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
         'see_all' => 'See all',
     ],
+    'found_pets' => [
+        'title' => 'Found Pets',
+        'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
+        'see_all' => 'See all',
+    ],
     'contact' => [
         'title' => 'Contact',
         'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',

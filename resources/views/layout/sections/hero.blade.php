@@ -3,12 +3,12 @@
         <div class="container">
             <div class="row" id="hero-row">
                 <div class="col-lg-6">
-                    <a id="found-pet" class="btn-get-started">
+                    <a id="found-pet" class="btn-get-started" data-toggle="modal" data-target="#found-pet-modal">
                         @lang('dictionary.hero.found_pet')
                     </a>
                 </div>
                 <div class="col-lg-6">
-                    <a id="lost-pet" class="btn-get-started" data-toggle="modal" data-target="#details-modal">
+                    <a id="lost-pet" class="btn-get-started" data-toggle="modal" data-target="#lost-pet-modal">
                         @lang('dictionary.hero.lost_pet')
                     </a>
                 </div>
@@ -18,3 +18,4 @@
 </section>
 
 @include('layout.modals.lost-pet-modal')
+@include('layout.modals.found-pet-modal')
