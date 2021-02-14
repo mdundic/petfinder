@@ -128,3 +128,40 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
+function searchLostPets() {
+    var type = $('#lost_pet_types').find(":selected:enabled").val();
+    var size = $('#lost_pet_sizes').find(":selected:enabled").val();
+    var color = $('#lost_pet_colors').find(":selected:enabled").val();
+    var location = $('#locations').find(":selected:enabled").val();
+
+    includeCsrfInAjaxHeader();
+
+    $.ajax({
+        url: API.url.search_lost_pets,
+        type: 'GET',
+        data: {
+            type: type,
+            size: size,
+            color: color,
+            location: location
+        },
+        success: function(expense) {
+
+            $('#lost-pet-portfolio').show();
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#lost-pet-portfolio").offset().top
+            }, 2000);
+        }
+    });
+}
+
+// include csrf token in ajax headers
+function includeCsrfInAjaxHeader() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}

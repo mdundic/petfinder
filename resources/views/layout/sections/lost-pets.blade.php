@@ -1,4 +1,4 @@
-<section id="portfolio">
+<section id="lost-pet-portfolio" hidden>
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h3 class="section-title">@lang('dictionary.lost_pets.title')</h3>

@@ -52,7 +52,6 @@ class LostPetValidator
             'size' => 'in:' . implode(',', PetSize::getAll()),
             'color'  => 'in:' . implode(',', PetColor::getAll()),
             'location'  => 'in:' . implode(',', Location::getAll()),
-            'found_at'  => 'date_format:Y-m-d|before:today',
         ]);
     }
 }
