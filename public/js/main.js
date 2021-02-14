@@ -176,7 +176,7 @@ function searchLostPets() {
 // get one box with pet sumary info
 function getOnePetBox(pet) {
     return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
-        '<a href="">' +
+        '<a href="" data-toggle="modal" data-target="#preview-pet-details">' +
         '<img src="' + PATH.public + '/' + pet.picture + '" alt="" class="portfolio-img">' +
         '<div class="details" id="lost-pet-' + pet.id + '-details" ' +
         'data-name="' + pet.name + '"' +
@@ -186,7 +186,7 @@ function getOnePetBox(pet) {
         'data-description="' + pet.description + '"' +
         'data-location="' + pet.location + '"' +
         'data-lost_at="' + pet.lost_at + '"' +
-        'data-picture="' + pet.picture + '"' +
+        'data-picture="' + PATH.public + '/' + pet.picture + '"' +
         'data-size="' + pet.size + '"' +
         'data-type="' + pet.type + '"' +
         '>' +

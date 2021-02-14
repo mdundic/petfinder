@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="name"><strong>Pitty</strong></h5>
+        <h5 class="modal-title" id="preview-name"><strong></strong></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,42 +10,42 @@
       <div class="modal-body">
         <div class="row">
             <div class="col-lg-12">
-                <img src="img/portfolio/app1.jpg" alt="" width="100%">
+                <img id="preview-picture" src="" alt="" width="100%">
             </div>
         </div>
         <div class="row" style="padding-top: 30px;">
             <div class="col-lg-3">
                 <label><strong>Type</strong></label>
-                <p>Dog</p>
+                <p id="preview-type"></p>
             </div>
             <div class="col-lg-3">
                 <label><strong>Breed</strong></label>
-                <p>Pit Bul</p>
+                <p id="preview-breed"></p>
             </div>
             <div class="col-lg-3">
                 <label><strong>Size</strong></label>
-                <p>Medium</p>
+                <p id="preview-size"></p>
             </div>
             <div class="col-lg-3">
                 <label><strong>Color</strong></label>
-                <p>White</p>
+                <p id="preview-color"></p>
             </div>
             <div class="col-lg-3">
                 <label><strong>Location</strong></label>
-                <p>BElgrade</p>
+                <p id="preview-location"></p>
             </div>
             <div class="col-lg-3">
                 <label><strong>Date</strong></label>
-                <p>1st Jan 2021</p>
+                <p id="preview-date"></p>
             </div>
             <div class="col-lg-6">
                 <label><strong>Additional information</strong></label>
-                <p>Some additional informayion about this pet.</p>
+                <p id="preview-description"></p>
             </div>
-    
+
             <div class="col-lg-12 contact-info" style="text-align: right; padding-right: 20px;">
                 <label><strong>Contact phone</strong></label>
-                <p>+38163351569</p>
+                <p id="preview-phone"></p>
             </div>
         </div>
       </div>
