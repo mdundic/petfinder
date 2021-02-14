@@ -49,16 +49,6 @@ class InitDb extends Migration
                 updated_at timestamp(0) without time zone NOT NULL DEFAULT now()
             );
 
-            CREATE TABLE users (
-                id serial PRIMARY KEY,
-                first_name text NOT NULL CHECK(trim(first_name) <> ''),
-                last_name text NOT NULL CHECK(trim(last_name) <> ''),
-                email text NOT NULL UNIQUE CHECK(trim(email) <> ''),
-                password text NOT NULL,
-                created_at timestamp(0) without time zone NOT NULL DEFAULT now(),
-                updated_at timestamp(0) without time zone NOT NULL DEFAULT now()
-            );
-
             CREATE TABLE lost_pets (
                 id serial PRIMARY KEY,
                 name text NOT NULL CHECK(trim(name) <> ''),
@@ -70,7 +60,7 @@ class InitDb extends Migration
                 size pet_sizes NOT NULL,
                 description text CHECK(trim(description) <> ''),
                 is_found boolean NOT NULL DEFAULT false,
-                user_id integer NOT NULL REFERENCES users(id),
+                contact_phone text NOT NULL,
                 lost_at timestamp(0) without time zone NOT NULL,
                 found_at timestamp(0) without time zone,
                 created_at timestamp(0) without time zone NOT NULL DEFAULT now(),
@@ -88,7 +78,7 @@ class InitDb extends Migration
                 size pet_sizes NOT NULL,
                 description text CHECK(trim(description) <> ''),
                 is_returned boolean NOT NULL DEFAULT false,
-                user_id integer NOT NULL REFERENCES users(id),
+                contact_phone text NOT NULL,
                 found_at timestamp(0) without time zone NOT NULL,
                 returned_at timestamp(0) without time zone,
                 created_at timestamp(0) without time zone NOT NULL DEFAULT now(),

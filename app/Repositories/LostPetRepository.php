@@ -35,7 +35,7 @@ class LostPetRepository
         $this->lostPet->size = $data['size'];
         $this->lostPet->description = $data['description'];
         $this->lostPet->lost_at = $data['lost_at'];
-        $this->lostPet->user_id = 1; // @TODO change when create users and login session
+        $this->lostPet->contact_phone = $data['contact_phone'];
 
         $this->lostPet->save();
     }
