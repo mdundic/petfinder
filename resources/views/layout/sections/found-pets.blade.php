@@ -5,7 +5,6 @@
             <p class="section-description">@lang('dictionary.found_pets.description')</p>
         </div>
         <div class="row" id="portfolio-wrapper">
-            <!-- foreach -->
             <div class="col-lg-3 col-md-6 portfolio-item filter-app">
                 <a href="">
                     <img src="img/portfolio/app1.jpg" alt="" class="portfolio-img">
@@ -15,12 +14,13 @@
                     </div>
                 </a>
             </div>
-            <!-- endforeach -->
-            <div class="col-lg-12" id="load-more">
-                <button type="submit" class='beige-btn'>
-                    @lang('dictionary.found_pets.see_all')
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-found-pet">
+                  Add found pet
                 </button>
             </div>
         </div>
     </div>
 </section>
+
+@include('layout.modals.add-found-pet')
