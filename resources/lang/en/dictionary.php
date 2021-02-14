@@ -26,7 +26,7 @@ return [
             'gray' => 'Gray',
             'gray_white' => 'Gray and white',
         ],
-        'town' => [
+        'location' => [
             'select' => 'Select town',
             'belgrade' => 'Belgrade',
             'pancevo' => 'Pancevo',
@@ -36,8 +36,10 @@ return [
             'other' => 'Other',
         ],
         'size' => [
-            'select' => 'selectSize',
-            
+            'select' => 'Select size',
+            'small' => 'Small',
+            'medium' => 'Medium',
+            'large' => 'Large',
         ],
         'search' => 'Search',
     ],

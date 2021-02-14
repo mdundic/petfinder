@@ -14,45 +14,44 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-6 search-filter">
                         <!-- Type -->
-                        <select class="custom-select">
+                        <select class="custom-select" id='lost_pet_types'>
                             <option selected>@lang('dictionary.hero.type.select')</option>
-                            <option value="dog">@lang('dictionary.hero.type.dog')</option>
-                            <option value="cat">@lang('dictionary.hero.type.cat')</option>
-                            <option value="bird">@lang('dictionary.hero.type.bird')</option>
-                            <option value="rodent">@lang('dictionary.hero.type.rodent')</option>
-                            <option value="reptile">@lang('dictionary.hero.type.reptile')</option>
-                            <option value="other">@lang('dictionary.hero.type.other')</option>
+                             @foreach ($pet_types as $type)
+                                <option value="{{ $type }}">@lang('dictionary.hero.type.' . $type)</option>
+                            @endforeach
                         </select>
+                    </div>
+                    <div class="col-6 search-filter" id='lost_pet_sizes'>
                         <!-- Size -->
                         <select class="custom-select">
                             <option selected>@lang('dictionary.hero.size.select')</option>
-                            <option value="other">@lang('dictionary.hero.size.other')</option>
+                            @foreach ($pet_sizes as $size)
+                                <option value="{{ $size }}">@lang('dictionary.hero.size.' . $size)</option>
+                            @endforeach
                         </select>
-                        <input type="date" id="found_at" name="found_at">
+                    </div>
+                    <div class="col-6 search-filter" id='lost_pet_colors'>
                         <!-- Color -->
                         <select class="custom-select">
                             <option selected>@lang('dictionary.hero.color.select')</option>
-                            <option value="black">@lang('dictionary.hero.color.black')</option>
-                            <option value="white">@lang('dictionary.hero.color.white')</option>
-                            <option value="brown">@lang('dictionary.hero.color.brown')</option>
-                            <option value="black_white">@lang('dictionary.hero.color.black_white')</option>
-                            <option value="yellow">@lang('dictionary.hero.color.yellow')</option>
-                            <option value="yellow_white">@lang('dictionary.hero.color.yellow_white')</option>
-                            <option value="gray">@lang('dictionary.hero.color.gray')</option>
-                            <option value="gray_white">@lang('dictionary.hero.color.gray_white')</option>
+                            @foreach ($pet_colors as $color)
+                                <option value="{{ $color }}">@lang('dictionary.hero.color.' . $color)</option>
+                            @endforeach
                         </select>
+                    </div>
+                    <div class="col-6 search-filter" id='locations'>
                         <!-- Town -->
                         <select class="custom-select">
-                            <option selected>@lang('dictionary.hero.town.select')</option>
-                            <option value="belgrade">@lang('dictionary.hero.town.belgrade')</option>
-                            <option value="pancevo">@lang('dictionary.hero.town.pancevo')</option>
-                            <option value="kragujevac">@lang('dictionary.hero.town.kragujevac')</option>
-                            <option value="novi_sad">@lang('dictionary.hero.town.novi_sad')</option>
-                            <option value="nis">@lang('dictionary.hero.town.nis')</option>
-                            <option value="other">@lang('dictionary.hero.town.other')</option>
+                            <option selected>@lang('dictionary.hero.location.select')</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location }}">@lang('dictionary.hero.location.' . $location)</option>
+                            @endforeach
                         </select>
+                    </div>
+                    <div class="col-6 search-filter">
+                        <input type="date" id="found_at" name="found_at">
                     </div>
                 </div>
             </div>
