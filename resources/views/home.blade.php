@@ -8,6 +8,8 @@
 
     @include('layout.sections.found-pets')
 
+    @include('layout.modals.preview-pet')
+
     @include('layout.sections.about')
 
     @include('layout.sections.contact')

@@ -1097,6 +1097,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #495057;
 }
 
+.contact-info {
+    background-color: #f7f7f7;
+    color: black;
+    padding-top: 20px;
+}
 /*
 *
 * ==========================================
@@ -1138,4 +1143,5 @@ body.mobile-nav-active #mobile-nav-toggle {
     z-index: 2;
     position: relative;
 }
+
 
