@@ -29,4 +29,3 @@
 </section>
 
 @include('layout.modals.add-lost-pet')
-@include('layout.modals.preview-pet')

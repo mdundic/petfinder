@@ -29,4 +29,3 @@
 </section>
 
 @include('layout.modals.add-found-pet')
-@include('layout.modals.preview-pet')
