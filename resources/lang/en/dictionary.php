@@ -61,6 +61,11 @@ return [
         'title' => 'Lost Pets',
         'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
         'see_all' => 'See all',
+        'modal' => [
+            'title' => 'Lost pet',
+            'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
+            'enter_description' => 'Any specific details?'
+        ],
     ],
     'found_pets' => [
         'title' => 'Found Pets',

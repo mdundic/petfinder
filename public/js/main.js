@@ -129,6 +129,7 @@ jQuery(document).ready(function ($) {
 
 });
 
+<<<<<<< HEAD
 function searchLostPets() {
     var type = $('#lost_pet_types').find(":selected:enabled").val();
     var size = $('#lost_pet_sizes').find(":selected:enabled").val();
@@ -172,7 +173,7 @@ function searchLostPets() {
 function getOnePetBox(name, picture, description) {
     return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
         '<a href="">' +
-        '<img src="' + picture + '" alt="" class="portfolio-img">' +
+        '<img src="' + PATH.public + picture + '" alt="" class="portfolio-img">' +
         '<div class="details">' +
         '<h4>' + name + '</h4>' +
         '<span>' + description + '</span>' +
@@ -188,4 +189,38 @@ function includeCsrfInAjaxHeader() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+}
+
+/*  ==========================================
+    SHOW UPLOADED IMAGE
+* ========================================== */
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imageResult')
+                .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$(function () {
+    $('#upload').on('change', function () {
+        readURL(input);
+    });
+});
+
+/*  ==========================================
+    SHOW UPLOADED IMAGE NAME
+* ========================================== */
+var input = document.getElementById( 'upload' );
+var infoArea = document.getElementById( 'upload-label' );
+
+input.addEventListener( 'change', showFileName );
+function showFileName( event ) {
+  var input = event.srcElement;
+  var fileName = input.files[0].name;
+  infoArea.textContent = 'File name: ' + fileName;
 }

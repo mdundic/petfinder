@@ -6,6 +6,11 @@
         </div>
         <div class="row" id="portfolio-wrapper">
             <!-- dinamicaly populated from JS -->
+            <div class="col-lg-12">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-lost-pet">
+                  Launch demo modal
+                </button>
+            </div>
         </div>
     </div>
 </section>

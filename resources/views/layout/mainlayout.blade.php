@@ -35,6 +35,10 @@
             //     }
             // };
 
+            var PATH = {
+                public: '{{ asset(config('filesystems.disks.public.path')) }}',
+            }
+
             var API = {
                 url: {
                     search_lost_pets: '{{ route('api-pets-lost-search') }}',

@@ -58,6 +58,11 @@ Generate key for .env file
 $ docker exec -it php artisan key:generate
 ```
 
+Create symlink for public files
+```
+$ docker exec -it php artisan storage:link
+```
+
 ## Usage
 
 Access the laravel app on your local machine

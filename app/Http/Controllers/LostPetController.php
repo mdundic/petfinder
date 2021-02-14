@@ -40,28 +40,14 @@ class LostPetController extends Controller
     {
         $this->validator->validateAdd($request);
 
-        $params = $request->get('picture');
+        $params = $request->all();
 
-
-
-        foreach (Car::IMAGE_NUMBERS as $i) {
-            $image = 'image_' . $i;
-
-            if (!isset($params[$image])) {
-                continue;
-            }
-
-            $fileName = $request->file($image)->store('');
-
-            $params[$image] = $fileName;
-
-            $images[] = $fileName;
-        }
+        $params['picture'] = $request->file('picture')->store('');
 
         try {
-            $this->lostPetRepository->add($request->all());
+            $this->lostPetRepository->add($params);
         } catch (Exception $e) {
-            Storage::delete($image);
+            Storage::delete($params['picture']);
 
             return response(null, 500);
         }
