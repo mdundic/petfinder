@@ -77,16 +77,16 @@
                         <!-- Upload image input-->
                         <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                             <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                            <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                            <label id="upload-label" for="upload" class="font-weight-light text-muted">@lang('dictionary.files.choose')</label>
                             <div class="input-group-append">
-                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                                <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">@lang('dictionary.files.choose')</small></label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary search-btn">Add new lost pet</button>
+                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">@lang('dictionary.close')</button>
+                    <button type="button" class="btn btn-primary search-btn">@lang('dictionary.lost_pets.modal.add_new')</button>
                 </div>
             </div>
         </div>

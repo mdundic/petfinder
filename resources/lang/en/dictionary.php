@@ -64,13 +64,20 @@ return [
         'modal' => [
             'title' => 'Lost pet',
             'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
-            'enter_description' => 'Any specific details?'
+            'enter_description' => 'Any specific details?',
+            'add_new' => 'Add lost pet',
         ],
     ],
     'found_pets' => [
         'title' => 'Found Pets',
         'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
         'see_all' => 'See all',
+        'modal' => [
+            'title' => 'Found pet',
+            'description' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque',
+            'enter_description' => 'Any specific details?',
+            'add_new' => 'Add found pet',
+        ],
     ],
     'contact' => [
         'title' => 'Contact',
@@ -101,5 +108,10 @@ return [
         'help_for_paws' => 'Help for paws',
         'all_rights_reserved' => 'All rights reserved',
         'designed_by' => 'Designed by Milica'
-    ]
+    ],
+    'files' => [
+        'choose' => 'Choose file',
+    ],
+    'close' => 'Close',
+
 ];
