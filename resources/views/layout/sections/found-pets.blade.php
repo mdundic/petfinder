@@ -14,9 +14,14 @@
                     </div>
                 </a>
             </div>
-            <div class="col-lg-12">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-found-pet">
-                  Add found pet
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                If you have found someone's pet, and you can not find it in the list of lost pets, please add the pet's detailsand help the owners to find their pets. If someone recognises their pet they will contact you. Thtank you!
+            </div>
+            <div class="col-lg-4">
+                <button type="button" class="btn btn-primary search-btn" data-toggle="modal" data-target="#add-lost-pet">
+                  @lang('dictionary.found_pets.add_new')
                 </button>
             </div>
         </div>

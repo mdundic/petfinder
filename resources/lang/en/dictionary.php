@@ -67,6 +67,7 @@ return [
             'enter_description' => 'Any specific details?',
             'add_new' => 'Add lost pet',
         ],
+        'add_new' => 'Add your lost pet' 
     ],
     'found_pets' => [
         'title' => 'Found Pets',
@@ -78,6 +79,7 @@ return [
             'enter_description' => 'Any specific details?',
             'add_new' => 'Add found pet',
         ],
+        'add_new' => 'Add found pet'
     ],
     'contact' => [
         'title' => 'Contact',
