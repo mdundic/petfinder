@@ -51,7 +51,7 @@
                         </select>
                     </div>
                     <div class="col-6 search-filter">
-                        <input type="date" id="lost_at" name="lost_at">
+                        <input type="date" class="custom-input" id="lost_at" name="lost_at">
                     </div>
                 </div>
             </div>

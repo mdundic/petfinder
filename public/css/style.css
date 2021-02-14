@@ -1069,15 +1069,13 @@ body.mobile-nav-active #mobile-nav-toggle {
     margin-top: 30px;
 }
 
-#found_at, #lost_at {
-    display: inline-block !important;
+.custom-input {
     width: 100% !important;
     height: calc(2.25rem + 2px)!important;
     padding: 0 4px 0 13px;
     line-height: 1.5;
     color: #495057;
     vertical-align: middle;
-    background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
     background-size: 8px 10px;
     border: 1px solid #ced4da;
     border-radius: .25rem;
@@ -1089,3 +1087,55 @@ body.mobile-nav-active #mobile-nav-toggle {
 .search-filter {
   padding-bottom: 15px
 }
+
+.close-btn {
+  border-radius: unset;
+}
+
+
+::placeholder {
+  color: #495057;
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+#upload {
+    opacity: 0;
+}
+
+#upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+.image-area {
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    position: relative;
+}
+
+.image-area::before {
+    content: 'Uploaded image result';
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
+}
+
+.image-area img {
+    z-index: 2;
+    position: relative;
+}
+
