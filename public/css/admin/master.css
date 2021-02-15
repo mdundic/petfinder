@@ -93,6 +93,10 @@ input[type=file] {
   background-color:#F0FFFB;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 @media only screen and (min-width: 768px) {
   .main-wrapper {
     padding-left: 250px;
