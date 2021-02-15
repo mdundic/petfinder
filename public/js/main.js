@@ -129,6 +129,20 @@ jQuery(document).ready(function ($) {
 
 });
 
+/* -------------------------------------------- CUSTOM JS -------------------------------------------- */
+
+// Show uploaded image name
+var input = document.getElementById( 'upload' );
+var infoArea = document.getElementById( 'upload-label' );
+
+input.addEventListener( 'change', showFileName );
+function showFileName( event ) {
+  var input = event.srcElement;
+  var fileName = input.files[0].name;
+  infoArea.textContent = 'File name: ' + fileName;
+}
+
+// Search lost pet
 function searchLostPets() {
     var type = $('#lost_pet_types').find(":selected:enabled").val();
     var size = $('#lost_pet_sizes').find(":selected:enabled").val();
@@ -173,7 +187,7 @@ function searchLostPets() {
     });
 }
 
-// get one box with pet sumary info
+// Get one box with pet sumary info
 function getOnePetBox(pet) {
     return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
         '<a href="" data-toggle="modal" data-target="#preview-pet-details" ' +
@@ -197,7 +211,7 @@ function getOnePetBox(pet) {
         '</div>';
 }
 
-// include csrf token in ajax headers
+// Include csrf token in ajax headers
 function includeCsrfInAjaxHeader() {
     $.ajaxSetup({
         headers: {
@@ -206,36 +220,7 @@ function includeCsrfInAjaxHeader() {
     });
 }
 
-// SHOW UPLOADED IMAGE
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#imageResult')
-                .attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$(function () {
-    $('#upload').on('change', function () {
-        readURL(input);
-    });
-});
-
-// SHOW UPLOADED IMAGE NAME
-var input = document.getElementById( 'upload' );
-var infoArea = document.getElementById( 'upload-label' );
-
-input.addEventListener( 'change', showFileName );
-function showFileName( event ) {
-  var input = event.srcElement;
-  var fileName = input.files[0].name;
-  infoArea.textContent = 'File name: ' + fileName;
-}
-
+// Reset search results list
 function resetSearch() {
     $('#lost_pet_types').val("default");
     $('#lost_pet_sizes').val("default");
@@ -247,6 +232,7 @@ function resetSearch() {
     $('#found_locations').val("default");
 }
 
+// Preview pet details - populate field's data
 $('#preview-pet-details').on('show.bs.modal', function (e) {
     $('#preview-pet-details #preview-name').html($(e.relatedTarget).data('name'));
     $('#preview-pet-details #preview-breed').html($(e.relatedTarget).data('breed'));
