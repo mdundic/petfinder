@@ -1,5 +1,5 @@
 <div class="modal fade" id="found-pet-modal" tabindex="-1" role="dialog" aria-labelledby="foundPetLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="foundPetLabel">@lang('dictionary.hero.modal_title')</h5>
@@ -54,7 +54,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="resetSearch();" class="btn btn-secondary close-btn">@lang('dictionary.reset')</button>
-                <button type="button" class="btn btn-primary search-btn">@lang('dictionary.hero.search')</button>
+                <button type="button" onclick="searchFoundPets();" data-dismiss="modal" class="btn btn-primary search-btn">@lang('dictionary.hero.search')</button>
             </div>
         </div>
     </div>

@@ -42,6 +42,7 @@
             var API = {
                 url: {
                     search_lost_pets: '{{ route('api-pets-lost-search') }}',
+                    search_found_pets: '{{ route('api-pets-found-search') }}',
                 }
             }
 

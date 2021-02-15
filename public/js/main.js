@@ -129,6 +129,20 @@ jQuery(document).ready(function ($) {
 
 });
 
+/* -------------------------------------------- CUSTOM JS -------------------------------------------- */
+
+// Show uploaded image name
+var input = document.getElementById( 'upload' );
+var infoArea = document.getElementById( 'upload-label' );
+
+input.addEventListener( 'change', showFileName );
+function showFileName( event ) {
+  var input = event.srcElement;
+  var fileName = input.files[0].name;
+  infoArea.textContent = 'File name: ' + fileName;
+}
+
+// Search lost pet
 function searchLostPets() {
     var type = $('#lost_pet_types').find(":selected:enabled").val();
     var size = $('#lost_pet_sizes').find(":selected:enabled").val();
@@ -173,10 +187,76 @@ function searchLostPets() {
     });
 }
 
-// get one box with pet sumary info
+// Search found pet
+function searchFoundPets() {
+    var type = $('#found_pet_types').find(":selected:enabled").val();
+    var size = $('#found_pet_sizes').find(":selected:enabled").val();
+    var color = $('#found_pet_colors').find(":selected:enabled").val();
+    var location = $('#found_locations').find(":selected:enabled").val();
+
+    includeCsrfInAjaxHeader();
+
+    $.ajax({
+        url: API.url.search_found_pets,
+        type: 'GET',
+        data: {
+            type: type,
+            size: size,
+            color: color,
+            location: location
+        },
+        success: function(pets) {
+            $('#found-pets-portfolio #portfolio-wrapper').html('');
+            $('#found-pets-portfolio').removeAttr('hidden');
+            $('#found-pets-portfolio #portfolio-no-results').attr("hidden",true);
+            $('#found-pets-portfolio #portfolio-found').attr("hidden",true);
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#found-pets-portfolio").offset().top
+            }, 1000);
+
+            if (jQuery.isEmptyObject(pets)) {
+                $('#found-pets-portfolio #portfolio-no-results').removeAttr('hidden');
+
+                return;
+            }
+
+            $.each(pets, function(key, pet) {
+                var box = getOnePetBox(pet);
+
+                $('#found-pets-portfolio #portfolio-wrapper').prepend(box);
+            });
+
+            $('#found-pets-portfolio #portfolio-found').removeAttr('hidden');
+        }
+    });
+}
+
+// Include csrf token in ajax headers
+function includeCsrfInAjaxHeader() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
+
+// Reset search results list
+function resetSearch() {
+    $('#lost_pet_types').val("default");
+    $('#lost_pet_sizes').val("default");
+    $('#lost_pet_colors').val("default");
+    $('#lost_locations').val("default");
+    $('#found_pet_types').val("default");
+    $('#found_pet_sizes').val("default");
+    $('#found_pet_colors').val("default");
+    $('#found_locations').val("default");
+}
+
+// Get one box with pet sumary info
 function getOnePetBox(pet) {
     return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
-        '<a href="" data-toggle="modal" data-target="#preview-pet-details" ' +
+        '<a href="" data-toggle="modal" data-target="#preview-pet-details" style="height: 100%;" ' +
         'data-name="' + pet.name + '"' +
         'data-breed="' + pet.breed + '"' +
         'data-color="' + pet.color + '"' +
@@ -197,56 +277,7 @@ function getOnePetBox(pet) {
         '</div>';
 }
 
-// include csrf token in ajax headers
-function includeCsrfInAjaxHeader() {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-}
-
-// SHOW UPLOADED IMAGE
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#imageResult')
-                .attr('src', e.target.result);
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$(function () {
-    $('#upload').on('change', function () {
-        readURL(input);
-    });
-});
-
-// SHOW UPLOADED IMAGE NAME
-var input = document.getElementById( 'upload' );
-var infoArea = document.getElementById( 'upload-label' );
-
-input.addEventListener( 'change', showFileName );
-function showFileName( event ) {
-  var input = event.srcElement;
-  var fileName = input.files[0].name;
-  infoArea.textContent = 'File name: ' + fileName;
-}
-
-function resetSearch() {
-    $('#lost_pet_types').val("default");
-    $('#lost_pet_sizes').val("default");
-    $('#lost_pet_colors').val("default");
-    $('#lost_locations').val("default");
-    $('#found_pet_types').val("default");
-    $('#found_pet_sizes').val("default");
-    $('#found_pet_colors').val("default");
-    $('#found_locations').val("default");
-}
-
+// Preview pet details - populate field's data
 $('#preview-pet-details').on('show.bs.modal', function (e) {
     $('#preview-pet-details #preview-name').html($(e.relatedTarget).data('name'));
     $('#preview-pet-details #preview-breed').html($(e.relatedTarget).data('breed'));
