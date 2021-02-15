@@ -185,7 +185,7 @@ function getOnePetBox(pet) {
         'data-contact_phone="' + pet.contact_phone + '"' +
         'data-description="' + pet.description + '"' +
         'data-location="' + pet.location + '"' +
-        'data-lost_at="' + pet.lost_at + '"' +
+        'data-date="' + pet.lost_at + '"' +
         'data-picture="' + PATH.public + '/' + pet.picture + '"' +
         'data-size="' + pet.size + '"' +
         'data-type="' + pet.type + '"' +
@@ -246,3 +246,22 @@ function resetSearch() {
     $('#found_pet_colors').val("default");
     $('#found_locations').val("default");
 }
+
+$('#preview-pet-details').on('show.bs.modal', function (e) {
+    var data = $( "body" ).data();
+
+    console.log(data);
+
+        // 'data-name="' + pet.name + '"' +
+        // 'data-breed="' + pet.breed + '"' +
+        // 'data-color="' + pet.color + '"' +
+        // 'data-contact_phone="' + pet.contact_phone + '"' +
+        // 'data-description="' + pet.description + '"' +
+        // 'data-location="' + pet.location + '"' +
+        // 'data-date="' + pet.lost_at + '"' +
+        // 'data-picture="' + PATH.public + '/' + pet.picture + '"' +
+        // 'data-size="' + pet.size + '"' +
+        // 'data-type="' + pet.type + '"' +
+
+
+})
