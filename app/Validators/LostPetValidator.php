@@ -34,7 +34,7 @@ class LostPetValidator
             'color'  => 'required|in:' . implode(',', PetColor::getAll()),
             'location'  => 'required|in:' . implode(',', Location::getAll()),
             'lost_at'  => 'required|date_format:Y-m-d|before:today',
-            'description'  => 'string',
+            'description'  => 'nullable|string',
             'contact_phone'  => 'required|string'
         ]);
     }

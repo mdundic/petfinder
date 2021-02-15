@@ -14,38 +14,43 @@
                         <p>@lang('dictionary.lost_pets.modal.description')</p>
                     </div>
                 </div>
+                <div class="row" >
+                    <div class="col">
+                        <div id="add-lost-pet-errors" class="alert alert-danger" hidden></div>
+                    </div>
+                </div>
                 <div class="row">
                     {{-- Type --}}
                     <div class="col-6 search-filter">
-                        <select class="custom-select" id='lost_pet_types'>
-                            <option selected disabled>@lang('dictionary.hero.type.select')</option>
+                        <select class="custom-select" id='add_lost_pet_types'>
+                            <option selected disabled value="default">@lang('dictionary.hero.type.select')</option>
                             @foreach ($pet_types as $type)
                             <option value="{{ $type }}">@lang('dictionary.hero.type.' . $type)</option>
                             @endforeach
                         </select>
                     </div>
                     {{-- Size --}}
-                    <div class="col-6 search-filter" id='lost_pet_sizes'>
-                        <select class="custom-select">
-                            <option selected disabled>@lang('dictionary.hero.size.select')</option>
+                    <div class="col-6 search-filter">
+                        <select class="custom-select" id='add_lost_pet_sizes'>
+                            <option selected disabled value="default">@lang('dictionary.hero.size.select')</option>
                             @foreach ($pet_sizes as $size)
                             <option value="{{ $size }}">@lang('dictionary.hero.size.' . $size)</option>
                             @endforeach
                         </select>
                     </div>
                     {{-- Color --}}
-                    <div class="col-6 search-filter" id='lost_pet_colors'>
-                        <select class="custom-select">
-                            <option selected disabled>@lang('dictionary.hero.color.select')</option>
+                    <div class="col-6 search-filter">
+                        <select class="custom-select" id='add_lost_pet_colors'>
+                            <option selected disabled value="default">@lang('dictionary.hero.color.select')</option>
                             @foreach ($pet_colors as $color)
                             <option value="{{ $color }}">@lang('dictionary.hero.color.' . $color)</option>
                             @endforeach
                         </select>
                     </div>
                     {{-- Town --}}
-                    <div class="col-6 search-filter" id='lost_locations'>
-                        <select class="custom-select">
-                            <option selected disabled>@lang('dictionary.hero.location.select')</option>
+                    <div class="col-6 search-filter">
+                        <select class="custom-select" id='add_lost_locations'>
+                            <option selected disabled value="default">@lang('dictionary.hero.location.select')</option>
                             @foreach ($locations as $location)
                             <option value="{{ $location }}">@lang('dictionary.hero.location.' . $location)</option>
                             @endforeach
@@ -53,24 +58,24 @@
                     </div>
                     {{-- Date --}}
                     <div class="col-6 search-filter">
-                        <input type="date" class="custom-input"  id="lost_at" name="lost_at">
+                        <input type="date" class="custom-input"  id="add_lost_at" name="lost_at">
                     </div>
                     {{-- Name --}}
                     <div class="col-6 search-filter">
-                        <input type="text" class="custom-input" id="name" name="name" placeholder="Enter pet's name">
+                        <input type="text" class="custom-input" id="add_lost_name" name="add_name" placeholder="Enter pet's name">
                     </div>
                     {{-- Breed --}}
                     <div class="col-6 search-filter">
-                        <input type="text" class="custom-input" id="breed" name="breed" placeholder="Enter pet's breed">
+                        <input type="text" class="custom-input" id="add_lost_breed" name="add_breed" placeholder="Enter pet's breed">
                     </div>
                     {{-- Phone --}}
                     <div class="col-6 search-filter">
-                        <input type="text" class="custom-input" id="contact_phone" name="contact_phone" placeholder="Enter your contact phone">
+                        <input type="text" class="custom-input" id="add_lost_contact_phone" name="add_contact_phone" placeholder="Enter your contact phone">
                     </div>
                     {{-- Description --}}
                     <div class="col-6 search-filter">
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="@lang('dictionary.lost_pets.modal.enter_description')"></textarea>
+                            <textarea class="form-control" id="add_lost_description" rows="3" placeholder="@lang('dictionary.lost_pets.modal.enter_description')"></textarea>
                         </div>
                     </div>
                     <div class="col-6">
@@ -86,7 +91,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">@lang('dictionary.close')</button>
-                    <button type="button" class="btn btn-primary search-btn">@lang('dictionary.lost_pets.modal.add_new')</button>
+                    <button type="button" onclick="addLostPet();" class="btn btn-primary search-btn">@lang('dictionary.lost_pets.modal.add_new')</button>
                 </div>
             </div>
         </div>

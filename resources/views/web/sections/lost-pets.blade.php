@@ -27,6 +27,11 @@
                 </button>
             </div>
         </div>
+        <div class="row" id="portfolio-lost-pet-added" hidden>
+            <div class="col-lg-8" >
+                Lost pet added successfuly. Moderator will need to approve it before it apears in search results.
+            </div>
+        </div>
     </div>
 </section>
 

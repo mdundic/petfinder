@@ -11,29 +11,11 @@
         @include('web.partials.footer')
 
         <script>
-            //var Translate = {
-            //     global: {
-            //         yes: '@lang('global.yes')',
-            //         no: '@lang('global.no')',
-            //         are_you_sure: '@lang('global.are_you_sure')',
-            //         please_select: '@lang('global.please_select')',
-            //         edit: '@lang('global.edit')',
-            //         create: '@lang('global.create')',
-            //         delete: '@lang('global.delete')',
-            //         cancel: '@lang('global.cancel')',
-            //         message_error: '@lang('global.message_error')',
-            //         message_success_update: '@lang('global.message.success_update')',
-            //         message_success_delete: '@lang('global.message.success_delete')',
-            //         company_name: '@lang('global.company_name')'
-            //     },
-            //     validation_error_keys: {
-            //         owner_name: '@lang('car.owner_name')',
-            //         note: '@lang('owner-expense.expenses')'
-            //     },
-            //     car: {
-            //         owner_name: '@lang('car.owner_name')'
-            //     }
-            // };
+            var Translate = {
+                global: {
+                    message_error: '@lang('global.message_error')',
+                }
+            }
 
             var PATH = {
                 public: '{{ asset(config('filesystems.disks.public.path')) }}',
@@ -43,9 +25,10 @@
                 url: {
                     search_lost_pets: '{{ route('api-pets-lost-search') }}',
                     search_found_pets: '{{ route('api-pets-found-search') }}',
+                    add_lost_pet: '{{ route('api-pets-lost-add') }}',
+                    add_found_pet: '{{ route('api-pets-found-add') }}',
                 }
             }
-
         </script>
 
         @include('web.partials.footer-scripts')
