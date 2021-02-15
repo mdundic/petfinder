@@ -99,4 +99,14 @@ class LostPetRepository
 
         $lostPet->save();
     }
+
+    /**
+     * Get the list of lost pets
+     *
+     * @return Collection
+     */
+    public function getAll() : Collection
+    {
+        return $this->lostPet->all();
+    }
 }
