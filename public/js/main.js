@@ -131,9 +131,6 @@ jQuery(document).ready(function ($) {
 
 /* -------------------------------------------- CUSTOM JS -------------------------------------------- */
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
 // SHOW UPLOADED IMAGE
 function readURL(input) {
     if (input.files && input.files[0]) {
