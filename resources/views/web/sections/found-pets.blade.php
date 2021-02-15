@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="row" id="portfolio-found-pet-added" hidden>
-            <div class="col-lg-8" >
+            <div class="col-lg-12 text-success" style="text-align: center;">
                 Found pet added successfuly. Moderator will need to approve it before it apears in search results.
             </div>
         </div>
