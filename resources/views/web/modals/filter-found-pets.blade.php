@@ -54,7 +54,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="resetSearch();" class="btn btn-secondary close-btn">@lang('dictionary.reset')</button>
-                <button type="button" class="btn btn-primary search-btn">@lang('dictionary.hero.search')</button>
+                <button type="button" onclick="searchFoundPets();" data-dismiss="modal" class="btn btn-primary search-btn">@lang('dictionary.hero.search')</button>
             </div>
         </div>
     </div>
