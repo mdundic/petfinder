@@ -67,17 +67,4 @@ class LostPetController extends Controller
 
         return $this->lostPetRepository->search($request->all());
     }
-
-    /**
-     * Found lost pet.
-     *
-     * @param integer $id
-     * @return Response
-     */
-    public function found(int $id) : Response
-    {
-        $this->petService->foundLostPet($id);
-
-        return response(null, 204);
-    }
 }

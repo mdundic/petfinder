@@ -23,5 +23,7 @@ Route::group(['as' => 'admin-', 'prefix' => 'admin', 'middleware' => 'auth'], fu
     Route::group(['as' => 'lost-pet-', 'prefix' => 'lost-pet'], function () {
         Route::get('/', ['as' => 'list', 'uses' => 'AdminLostPetsController@index']);
         Route::get('/{id}/preview', ['as' => 'preview', 'uses' => 'AdminLostPetsController@preview']);
+        Route::patch('{id}/found', [ 'as' => 'found', 'uses' => 'AdminLostPetsController@found']);
+        Route::patch('{id}/approve', [ 'as' => 'approve', 'uses' => 'AdminLostPetsController@approve']);
     });
 });

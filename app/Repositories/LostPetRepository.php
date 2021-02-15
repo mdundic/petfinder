@@ -109,4 +109,17 @@ class LostPetRepository
     {
         return $this->lostPet->all();
     }
+
+    /**
+     * Approve lost pet.
+     *
+     * @param LostPet $lostPet
+     * @return void
+     */
+    public function approve(LostPet $lostPet) : void
+    {
+        $lostPet->is_published = true;
+
+        $lostPet->save();
+    }
 }

@@ -14,6 +14,8 @@ return [
         'admin-user-delete',
         'admin-lost-pet-list',
         'admin-lost-pet-preview',
+        'admin-lost-pet-found',
+        'admin-lost-pet-approve',
     ],
     'moderator' => [
         'admin-index',
@@ -22,5 +24,7 @@ return [
         'admin-logout',
         'admin-lost-pet-list',
         'admin-lost-pet-preview',
+        'admin-lost-pet-found',
+        'admin-lost-pet-approve',
     ],
 ];

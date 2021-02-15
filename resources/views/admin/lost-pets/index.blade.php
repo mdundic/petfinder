@@ -15,6 +15,7 @@
                 <table id="lost-pets-list-table" class="table table-hover table-striped">
                         <thead>
                             <tr>
+                                <th>@lang('admin_pet.lost.index.table.approved')</th>
                                 <th>@lang('admin_pet.lost.index.table.type')</th>
                                 <th>@lang('admin_pet.lost.index.table.name')</th>
                                 <th>@lang('admin_pet.lost.index.table.breed')</th>
@@ -22,12 +23,20 @@
                                 <th>@lang('admin_pet.lost.index.table.location')</th>
                                 <th>@lang('admin_pet.lost.index.table.date')</th>
                                 <th>@lang('admin_pet.lost.index.table.description')</th>
+                                <th>@lang('admin_pet.lost.index.table.found')</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($lost_pets as $pet)
                             <tr class="pet-row">
+                                <td>
+                                    @if($pet->is_published) 
+                                        <span class="glyphicon glyphicon glyphicon-ok"></span>
+                                    @else
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    @endif
+                                </td>
                                 <td>{{ $pet->type }}</td>
                                 <td>{{ $pet->name }}</td>
                                 <td>{{ $pet->breed }}</td>
@@ -35,6 +44,13 @@
                                 <td>{{ $pet->location }}</td>
                                 <td>{{ $pet->lost_at }}</td>
                                 <td>{{ $pet->description }}</td>
+                                <td>
+                                    @if($pet->is_found) 
+                                        <span class="glyphicon glyphicon glyphicon-ok"></span>
+                                    @else
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    @endif
+                                </td>
                                 <td>
                                     <a href="{{ route('admin-lost-pet-preview', $pet->id) }}">
                                         <span class="glyphicon glyphicon-eye-open"></span>

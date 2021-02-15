@@ -12,7 +12,10 @@ return [
             	'description' => 'Additional information',
             	'location' => 'Location',
             	'date' => 'Date',
-                'approve' => 'Approve'
+                'approve' => 'Approve',
+                'approved' => 'Approved',
+                'mark_as_found' => 'Mark pet as FOUND',
+                'found' => 'Found',
             ],
         ]
     ]

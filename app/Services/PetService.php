@@ -52,4 +52,22 @@ class PetService
 
         $this->foundPetRepository->reurned($pet);
     }
+
+    /**
+     * Approve lost pet. Pet can be approved only once.
+     *
+     * @param integer $lostPetId
+     * @return void
+     */
+    public function approveLostPet(int $lostPetId) : void
+    {
+        $pet = $this->lostPetRepository->get($lostPetId);
+
+        if($pet->is_published) {
+            //@TODO create custom exception PetAlreadyApprovedException
+            throw new PetAlreadyFoundException;
+        }
+
+        $this->lostPetRepository->approve($pet);
+    }
 }
