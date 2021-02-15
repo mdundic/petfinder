@@ -27,10 +27,35 @@ class AdminLostPetsController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(Request $request) : View
     {
+        $searchParams = array_filter($request->only(
+            'is_published',
+            'type',
+            'name',
+            'breed',
+            'color',
+            'size',
+            'location',
+            'contact_phone',
+            'is_found',
+            'date_from',
+            'date_to',
+        ));
+
+        if (isset($searchParams['date_from'])) {
+            $searchParams['date_from'] = format_date_en($searchParams['date_from']);
+        }
+
+        if (isset($searchParams['date_to'])) {
+            $searchParams['date_to'] = format_date_en($searchParams['date_to']);
+        }
+
+        $pets = $this->repository->adminSearch($searchParams);
+
         return view('admin.lost-pets.index', [
-            'lost_pets' => $this->repository->getAll()
+            'pets' => $pets,
+            'searchParams' => $searchParams
         ]);
     }
 

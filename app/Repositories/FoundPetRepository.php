@@ -68,10 +68,6 @@ class FoundPetRepository
             $query->where('location', '=', $searchParams['location']);
         }
 
-        if (isset($searchParams['found_at'])) {
-            $query->where('found_at', '<=', $searchParams['found_at']);
-        }
-
         return $query->orderBy('found_at','desc')->get();
     }
 

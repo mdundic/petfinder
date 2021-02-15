@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\LostPet;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class LostPetRepository
 {
@@ -68,10 +69,6 @@ class LostPetRepository
             $query->where('location', '=', $searchParams['location']);
         }
 
-        if (isset($searchParams['found_at'])) {
-            $query->where('lost_at', '<=', $searchParams['found_at']);
-        }
-
         return $query->orderBy('lost_at','desc')->get();
     }
 
@@ -121,5 +118,66 @@ class LostPetRepository
         $lostPet->is_published = true;
 
         $lostPet->save();
+    }
+
+    /**
+     * Search lost pet for admin users
+     *
+     * @param array $searchParams
+     * @return LengthAwarePaginator
+     */
+    public function adminSearch(array $searchParams) : LengthAwarePaginator
+    {
+        $query = $this->lostPet->query();
+
+        if (isset($searchParams['type'])) {
+            $query->where('type', '=', $searchParams['type']);
+        }
+
+        if (isset($searchParams['color'])) {
+            $query->where('color', '=', $searchParams['color']);
+        }
+
+        if (isset($searchParams['size'])) {
+            $query->where('size', '=', $searchParams['size']);
+        }
+
+        if (isset($searchParams['location'])) {
+            $query->where('location', '=', $searchParams['location']);
+        }
+
+        if (isset($searchParams['found_at'])) {
+            $query->where('lost_at', '<=', $searchParams['found_at']);
+        }
+
+        if (isset($searchParams['name'])) {
+            $query->where('name', 'LIKE', '%' . $searchParams['name'] . '%');
+        }
+
+        if (isset($searchParams['breed'])) {
+            $query->where('breed', 'LIKE', '%' . $searchParams['breed'] . '%');
+        }
+
+        if (isset($searchParams['contact_phone'])) {
+            $query->where('contact_phone', 'LIKE', '%' . $searchParams['contact_phone'] . '%');
+        }
+
+        if (isset($searchParams['is_found'])) {
+            $query->where('is_found', '=', $searchParams['is_found']);
+        }
+
+        if (isset($searchParams['is_published'])) {
+            $query->where('is_published', '=', $searchParams['is_published']);
+        }
+
+        if (isset($searchParams['date_from'])) {
+            $query->where('lost_at', '>=', $searchParams['date_from']);
+        }
+
+        if (isset($searchParams['date_to'])) {
+            $query->where('lost_at', '<', $searchParams['date_to']);
+        }
+
+        return $query->orderBy('lost_at','desc')->paginate(config('search.resultsPerPage'));
     }
 }

@@ -1,15 +1,17 @@
 $(function () {
-    $('#inspection-date, #date-from').datetimepicker({
+    $('#date-from').datetimepicker({
         locale: 'sr',
         showClear: true,
-        showClose: true
+        showClose: true,
+        format: 'L'
     });
 
     $('#date-to').datetimepicker({
         locale: 'sr',
         showClear: true,
         showClose: true,
-        useCurrent: false //Important! See issue #1075
+        useCurrent: false, //Important! See issue #1075
+        format: 'L'
     });
 
     $("#date-from").on("dp.change", function (e) {

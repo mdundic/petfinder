@@ -9,7 +9,6 @@ $router->group(['middleware' => ['api'], 'as' => 'api-'], function ($router) {
         $router->group(['prefix' => 'found', 'as' => 'found-'], function ($router) {
             $router->post('/', [ 'as' => 'add', 'uses' => 'FoundPetController@add']);
             $router->get('search', [ 'as' => 'search', 'uses' => 'FoundPetController@search']);
-            $router->patch('{id}/returned', [ 'as' => 'found', 'uses' => 'FoundPetController@returned']);
         });
     });
 });
