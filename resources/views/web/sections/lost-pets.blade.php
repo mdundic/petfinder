@@ -7,7 +7,7 @@
         <div class="row" id="portfolio-wrapper">
             <!-- dinamicaly populated from JS -->
         </div>
-        <div class="row" id="portfolio-no-results" hidden>
+        <div class="row" id="portfolio-no-results" hidden style="padding-top: 30px;">
             <div class="col-lg-8">
                 There are no results for your pet search, please add your pet to the list of lost pets and if someone finds it, they will contact you.
             </div>
@@ -17,7 +17,7 @@
                 </button>
             </div>
         </div>
-        <div class="row" id="portfolio-found" hidden>
+        <div class="row" id="portfolio-found" hidden style="padding-top: 30px;">
             <div class="col-lg-8" >
                 If you haven't found your pet, please add your pet to the list of lost pets and if someone finds it, they will contact you.
             </div>
@@ -27,7 +27,7 @@
                 </button>
             </div>
         </div>
-        <div class="row" id="portfolio-lost-pet-added" hidden>
+        <div class="row" id="portfolio-lost-pet-added" hidden style="padding-top: 30px;">
             <div class="col-lg-12 text-success" style="text-align: center;">
                 Lost pet added successfuly. Moderator will need to approve it before it apears in search results.
             </div>
