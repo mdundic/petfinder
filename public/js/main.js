@@ -176,13 +176,11 @@ function searchLostPets() {
 // get one box with pet sumary info
 function getOnePetBox(pet) {
     return '<div class="col-lg-3 col-md-6 portfolio-item filter-app">' +
-        '<a href="" data-toggle="modal" data-target="#preview-pet-details">' +
-        '<img src="' + PATH.public + '/' + pet.picture + '" alt="" class="portfolio-img">' +
-        '<div class="details" id="lost-pet-' + pet.id + '-details" ' +
+        '<a href="" data-toggle="modal" data-target="#preview-pet-details" ' +
         'data-name="' + pet.name + '"' +
         'data-breed="' + pet.breed + '"' +
         'data-color="' + pet.color + '"' +
-        'data-contact_phone="' + pet.contact_phone + '"' +
+        'data-phone="' + pet.contact_phone + '"' +
         'data-description="' + pet.description + '"' +
         'data-location="' + pet.location + '"' +
         'data-date="' + pet.lost_at + '"' +
@@ -190,6 +188,8 @@ function getOnePetBox(pet) {
         'data-size="' + pet.size + '"' +
         'data-type="' + pet.type + '"' +
         '>' +
+        '<img src="' + PATH.public + '/' + pet.picture + '" alt="" class="portfolio-img">' +
+        '<div class="details">' +
         '<h4>' + pet.name + '</h4>' +
         '<span>' + pet.description + '</span>' +
         '</div>' +
@@ -248,20 +248,14 @@ function resetSearch() {
 }
 
 $('#preview-pet-details').on('show.bs.modal', function (e) {
-    var data = $( "body" ).data();
-
-    console.log(data);
-
-        // 'data-name="' + pet.name + '"' +
-        // 'data-breed="' + pet.breed + '"' +
-        // 'data-color="' + pet.color + '"' +
-        // 'data-contact_phone="' + pet.contact_phone + '"' +
-        // 'data-description="' + pet.description + '"' +
-        // 'data-location="' + pet.location + '"' +
-        // 'data-date="' + pet.lost_at + '"' +
-        // 'data-picture="' + PATH.public + '/' + pet.picture + '"' +
-        // 'data-size="' + pet.size + '"' +
-        // 'data-type="' + pet.type + '"' +
-
-
+    $('#preview-pet-details #preview-name').html($(e.relatedTarget).data('name'));
+    $('#preview-pet-details #preview-breed').html($(e.relatedTarget).data('breed'));
+    $('#preview-pet-details #preview-color').html($(e.relatedTarget).data('color'));
+    $('#preview-pet-details #preview-phone').html($(e.relatedTarget).data('phone'));
+    $('#preview-pet-details #preview-description').html($(e.relatedTarget).data('description'));
+    $('#preview-pet-details #preview-location').html($(e.relatedTarget).data('location'));
+    $('#preview-pet-details #preview-date').html($(e.relatedTarget).data('date'));
+    $('#preview-pet-details #preview-picture').attr("src", $(e.relatedTarget).data('picture'));
+    $('#preview-pet-details #preview-size').html($(e.relatedTarget).data('size'));
+    $('#preview-pet-details #preview-type').html($(e.relatedTarget).data('type'));
 })
