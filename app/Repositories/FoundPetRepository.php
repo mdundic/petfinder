@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\FoundPet;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class FoundPetRepository
 {
@@ -83,16 +84,86 @@ class FoundPetRepository
     }
 
     /**
-     * Found found pet.
+     * Return found pet.
      *
      * @param FoundPet $foundPet
      * @return void
      */
-    public function returned(FoundPet $foundPet) : void
+    public function return(FoundPet $foundPet) : void
     {
         $foundPet->is_returned = true;
         $foundPet->returned_at = 'now()';
 
         $foundPet->save();
+    }
+
+    /**
+     * Approve found pet.
+     *
+     * @param FoundPet $foundPet
+     * @return void
+     */
+    public function approve(FoundPet $foundPet) : void
+    {
+        $foundPet->is_published = true;
+
+        $foundPet->save();
+    }
+
+    /**
+     * Search found pet for admin users
+     *
+     * @param array $searchParams
+     * @return LengthAwarePaginator
+     */
+    public function adminSearch(array $searchParams) : LengthAwarePaginator
+    {
+        $query = $this->foundPet->query();
+
+        if (isset($searchParams['type'])) {
+            $query->where('type', '=', $searchParams['type']);
+        }
+
+        if (isset($searchParams['color'])) {
+            $query->where('color', '=', $searchParams['color']);
+        }
+
+        if (isset($searchParams['size'])) {
+            $query->where('size', '=', $searchParams['size']);
+        }
+
+        if (isset($searchParams['location'])) {
+            $query->where('location', '=', $searchParams['location']);
+        }
+
+        if (isset($searchParams['name'])) {
+            $query->where('name', 'LIKE', '%' . $searchParams['name'] . '%');
+        }
+
+        if (isset($searchParams['breed'])) {
+            $query->where('breed', 'LIKE', '%' . $searchParams['breed'] . '%');
+        }
+
+        if (isset($searchParams['contact_phone'])) {
+            $query->where('contact_phone', 'LIKE', '%' . $searchParams['contact_phone'] . '%');
+        }
+
+        if (isset($searchParams['is_returned'])) {
+            $query->where('is_returned', '=', $searchParams['is_returned']);
+        }
+
+        if (isset($searchParams['is_published'])) {
+            $query->where('is_published', '=', $searchParams['is_published']);
+        }
+
+        if (isset($searchParams['date_from'])) {
+            $query->where('found_at', '>=', $searchParams['date_from']);
+        }
+
+        if (isset($searchParams['date_to'])) {
+            $query->where('found_at', '<', $searchParams['date_to']);
+        }
+
+        return $query->orderBy('found_at','desc')->paginate(config('search.resultsPerPage'));
     }
 }

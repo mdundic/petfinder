@@ -3,7 +3,11 @@
 namespace App\Services;
 
 use App\Repositories\LostPetRepository;
+use App\Repositories\FoundPetRepository;
 use App\Exceptions\PetAlreadyFoundException;
+use App\Exceptions\PetAlreadyApprovedException;
+use App\Exceptions\PetAlreadyReturnedException;
+
 
 class PetService
 {
@@ -14,9 +18,10 @@ class PetService
      *
      * @return void
      */
-    public function __construct(LostPetRepository $lostPetRepository)
+    public function __construct(LostPetRepository $lostPetRepository, FoundPetRepository $foundPetRepository)
     {
         $this->lostPetRepository = $lostPetRepository;
+        $this->foundPetRepository = $foundPetRepository;
     }
 
     /**
@@ -47,10 +52,10 @@ class PetService
         $pet = $this->foundPetRepository->get($foundPetId);
 
         if($pet->is_returned) {
-            throw new PetAlreadyFoundException;
+            throw new PetAlreadyReturnedException;
         }
 
-        $this->foundPetRepository->reurned($pet);
+        $this->foundPetRepository->return($pet);
     }
 
     /**
@@ -64,10 +69,26 @@ class PetService
         $pet = $this->lostPetRepository->get($lostPetId);
 
         if($pet->is_published) {
-            //@TODO create custom exception PetAlreadyApprovedException
-            throw new PetAlreadyFoundException;
+            throw new PetAlreadyApprovedException;
         }
 
         $this->lostPetRepository->approve($pet);
+    }
+
+    /**
+     * Approve found pet. Pet can be approved only once.
+     *
+     * @param integer $foundPetId
+     * @return void
+     */
+    public function approveFoundPet(int $foundPetId) : void
+    {
+        $pet = $this->foundPetRepository->get($foundPetId);
+
+        if($pet->is_published) {
+            throw new PetAlreadyApprovedException;
+        }
+
+        $this->foundPetRepository->approve($pet);
     }
 }

@@ -98,16 +98,6 @@ class LostPetRepository
     }
 
     /**
-     * Get the list of lost pets
-     *
-     * @return Collection
-     */
-    public function getAll() : Collection
-    {
-        return $this->lostPet->all();
-    }
-
-    /**
      * Approve lost pet.
      *
      * @param LostPet $lostPet
@@ -144,10 +134,6 @@ class LostPetRepository
 
         if (isset($searchParams['location'])) {
             $query->where('location', '=', $searchParams['location']);
-        }
-
-        if (isset($searchParams['found_at'])) {
-            $query->where('lost_at', '<=', $searchParams['found_at']);
         }
 
         if (isset($searchParams['name'])) {
