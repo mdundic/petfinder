@@ -16,6 +16,10 @@ return [
         'admin-lost-pet-preview',
         'admin-lost-pet-found',
         'admin-lost-pet-approve',
+        'admin-found-pet-list',
+        'admin-found-pet-preview',
+        'admin-found-pet-return',
+        'admin-found-pet-approve',
     ],
     'moderator' => [
         'admin-index',
@@ -26,5 +30,9 @@ return [
         'admin-lost-pet-preview',
         'admin-lost-pet-found',
         'admin-lost-pet-approve',
+        'admin-found-pet-list',
+        'admin-found-pet-preview',
+        'admin-found-pet-return',
+        'admin-found-pet-approve',
     ],
 ];
