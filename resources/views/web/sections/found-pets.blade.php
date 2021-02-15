@@ -9,11 +9,11 @@
         </div>
         <div class="row" id="portfolio-no-results" hidden>
             <div class="col-lg-8">
-                There are no results for your pet search, please add your pet to the list of lost pets and if someone finds it, they will contact you.
+                There are no results for your pet search, please add your pet to the list of found pets and if someone recognise it, they will contact you.
             </div>
             <div class="col-lg-4">
-                <button type="button" class="btn btn-primary search-btn" data-toggle="modal" data-target="#add-lost-pet">
-                  @lang('dictionary.lost_pets.add_new')
+                <button type="button" class="btn btn-primary search-btn" data-toggle="modal" data-target="#add-found-pet">
+                  @lang('dictionary.found_pets.add_new')
                 </button>
             </div>
         </div>
