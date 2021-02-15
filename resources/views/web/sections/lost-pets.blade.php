@@ -30,4 +30,4 @@
     </div>
 </section>
 
-@include('layout.modals.add-lost-pet')
+@include('web.modals.add-lost-pet')

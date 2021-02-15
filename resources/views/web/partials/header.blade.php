@@ -7,7 +7,7 @@
             </a>
         </div>
 
-        @include('layout.partials.nav')
+        @include('web.partials.nav')
 
     </div>
 </header>

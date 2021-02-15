@@ -1,14 +1,14 @@
 <!DOCTYPE html>
     <html lang="en">
     <head>
-        @include('layout.partials.head')
+        @include('web.partials.head')
     </head>
     <body>
-        @include('layout.partials.header')
+        @include('web.partials.header')
 
         @yield('content')
 
-        @include('layout.partials.footer')
+        @include('web.partials.footer')
 
         <script>
             //var Translate = {
@@ -47,6 +47,6 @@
 
         </script>
 
-        @include('layout.partials.footer-scripts')
+        @include('web.partials.footer-scripts')
     </body>
 </html>

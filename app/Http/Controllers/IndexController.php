@@ -19,7 +19,7 @@ class IndexController extends Controller
      */
     public function home() : View
     {
-        return view('home', [
+        return view('web.home', [
             'pet_colors' => PetColor::getAll(),
             'pet_sizes' => PetSize::getAll(),
             'pet_types' => PetType::getAll(),

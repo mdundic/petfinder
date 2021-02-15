@@ -17,5 +17,5 @@
     </div>
 </section>
 
-@include('layout.modals.filter-lost-pets')
-@include('layout.modals.filter-found-pets')
+@include('web.modals.filter-lost-pets')
+@include('web.modals.filter-found-pets')
