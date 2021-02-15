@@ -55,7 +55,7 @@ $ docker exec -it petfinder-web php artisan migrate
 
 Generate key for .env file
 ```
-$ docker exec -it php artisan key:generate
+$ docker exec -it petfinder-web php artisan key:generate
 ```
 
 Create symlink for public files
@@ -63,8 +63,18 @@ Create symlink for public files
 $ docker exec -it php artisan storage:link
 ```
 
+Create first admin user
+```
+$ docker exec -it petfinder-postgres psql -U postgres -d petfinder -c  "CREATE EXTENSION pgcrypto; INSERT INTO admin_users (first_name, last_name, email, password, role) VALUES ('Admin', 'Admin', 'admin@admin.com', crypt('password', gen_salt('bf', 8)), 'admin');"
+```
+
 ## Usage
 
 Access the laravel app on your local machine
 
 http://localhost:81
+
+Login to admin pannel with admin@admin.com : password
+
+http://localhost:81/admin/login
+

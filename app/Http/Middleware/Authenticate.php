@@ -2,20 +2,38 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Closure;
+use Illuminate\Auth\AuthManager;
 
-class Authenticate extends Middleware
+class Authenticate
 {
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    protected function redirectTo($request)
+    protected $auth;
+
+    public function __construct(AuthManager $auth)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        $this->auth = $auth;
+    }
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     *
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        if (!$this->auth->check()) {
+            return redirect()->route('admin-login');
         }
+
+        $allowedRoutes = config('acl.' . $this->auth->user()->role);
+
+        if (!in_array($request->route()->getName(), $allowedRoutes)) {
+            die(trans('auth.no_permission'));
+        }
+
+        return $next($request);
     }
 }
