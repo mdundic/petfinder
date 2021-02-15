@@ -1,4 +1,4 @@
-<section id="lost-pets-portfolio" class="portfolio" hidden>
+<section id="lost-pets-portfolio" class="portfolio">
     <div class="container wow fadeInUp">
         <div class="section-header">
             <h3 class="section-title">@lang('dictionary.lost_pets.title')</h3>
@@ -17,7 +17,7 @@
                 </button>
             </div>
         </div>
-        <div class="row" id="portfolio-found" hidden>
+        <div class="row" id="portfolio-found">
             <div class="col-lg-8" >
                 If you haven't found your pet, please add your pet to the list of lost pets and if someone finds it, they will contact you.
             </div>
@@ -25,6 +25,11 @@
                 <button type="button" class="btn btn-primary search-btn" data-toggle="modal" data-target="#add-lost-pet">
                   @lang('dictionary.lost_pets.add_new')
                 </button>
+            </div>
+        </div>
+        <div class="row" id="portfolio-lost-pet-added" hidden>
+            <div class="col-lg-8" >
+                Lost pet added successfuly. Moderator will need to approve it before it apears in search results
             </div>
         </div>
     </div>
