@@ -132,6 +132,7 @@ jQuery(document).ready(function ($) {
 /* -------------------------------------------- CUSTOM JS -------------------------------------------- */
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 // SHOW UPLOADED IMAGE
 function readURL(input) {
@@ -163,8 +164,6 @@ function showFileName( event ) {
   infoArea.textContent = 'File name: ' + fileName;
 }
 
-=======
->>>>>>> Stashed changes
 // Search lost pet
 function searchLostPets() {
     var type = $('#lost_pet_types').find(":selected:enabled").val();
