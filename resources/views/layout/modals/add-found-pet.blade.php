@@ -69,7 +69,7 @@
                     {{-- Description --}}
                     <div class="col-6 search-filter">
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">@lang('dictionary.found_pets.modal.enter_description')</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="@lang('dictionary.lost_pets.modal.enter_description')"></textarea>
                         </div>
                     </div>
                     <div class="col-6">
