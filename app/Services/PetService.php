@@ -24,7 +24,6 @@ class PetService
      *
      * @param integer $lostPetId
      * @return void
-     * @throws PetAlreadyFoundException
      */
     public function foundLostPet(int $lostPetId) : void
     {
@@ -34,11 +33,23 @@ class PetService
             throw new PetAlreadyFoundException;
         }
 
-        // @TODO change when create users and login session
-        if($pet->user_id != 1) {
-            throw new PetDoesntBelongToUserException;
+        $this->lostPetRepository->found($pet);
+    }
+
+    /**
+     * Reurn found pet. Pet can be returned only once.
+     *
+     * @param integer $lostPetId
+     * @return void
+     */
+    public function returnFoundPet(int $foundPetId) : void
+    {
+        $pet = $this->foundPetRepository->get($foundPetId);
+
+        if($pet->is_returned) {
+            throw new PetAlreadyFoundException;
         }
 
-        $this->lostPetRepository->found($pet);
+        $this->foundPetRepository->reurned($pet);
     }
 }
