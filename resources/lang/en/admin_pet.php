@@ -12,6 +12,7 @@ return [
             	'description' => 'Additional information',
             	'location' => 'Location',
             	'date' => 'Date',
+                'approve' => 'Approve'
             ],
         ]
     ]

@@ -15,27 +15,45 @@
     	<div class="col-xs-4">
     		<img src="{{ asset(config('filesystems.disks.public.path')) . $pet->picture }}" width="100%">
     	</div>
-   
-        <div class="col-xs-4">
-        	<p>@lang('admin_pet.lost.index.table.type')</p>
-        	<p>@lang('admin_pet.lost.index.table.name')</p>
-        	<p>@lang('admin_pet.lost.index.table.breed')</p>
-            <p>@lang('admin_pet.lost.index.table.color')</p>
-            <p>@lang('admin_pet.lost.index.table.location')</p>
-            <p>@lang('admin_pet.lost.index.table.date')</p>
-            <p>@lang('admin_pet.lost.index.table.description')</p>
-        </div>
-        <div class="col-xs-4">
-        	<p>{{ $pet->type }}</p>
-        	<p>{{ $pet->name }}</p>
-        	<p>{{ $pet->breed }}</p>
-            <p>{{ $pet->color }}</p>
-            <p>{{ $pet->location }}</p>
-            <p>{{ $pet->lost_at }}</p>
-            <p>{{ $pet->description }}</p>
-        </div>
+
+    	<div class="col-xs-8">
+    		<div class="table-responsive">
+                <table id="pets-list-table" class="table table-hover table-striped">
+                    <tbody>
+                        <tr>
+                            <th>@lang('admin_pet.lost.index.table.type')</th>
+                            <td>{{ $pet->type }}</th>
+                        </tr>
+                        <tr>
+                        	<th>@lang('admin_pet.lost.index.table.name')</th>
+                        	<td>{{ $pet->name }}</th>
+                        </tr>
+                        <tr>
+							<th>@lang('admin_pet.lost.index.table.breed')</th>
+							<td>{{ $pet->breed }}</th>
+						</tr>
+						<tr>
+							<th>@lang('admin_pet.lost.index.table.color')</th>
+							<td>{{ $pet->color }}</th>
+						</tr>
+						<tr>
+							<th>@lang('admin_pet.lost.index.table.location')</th>
+							<td>{{ $pet->location }}</th>
+						</tr>
+						<tr>
+							<th>@lang('admin_pet.lost.index.table.date')</th>
+							<td>{{ $pet->lost_at }}</th>
+						</tr>
+						<tr>
+							<th>@lang('admin_pet.lost.index.table.description')</th>
+							<td>{{ $pet->description }}</td>
+						</tr>
+                    </tbody>
+                </table>
+    		</div>
+    	</div>
     </div>
-    <div class="row" style="padding: 100px;">
+    <div class="row" style="padding-top: 20px;">
         <div class="col-xs-12 text-right">
         	@if( $pet->is_published === true )
         	<button type="button" class="btn btn-success">
@@ -44,7 +62,8 @@
         	@endif
         	@if( $pet->is_published === false )
         	<button type="button" class="btn btn-success">
-        		<span class="glyphicon glyphicon glyphicon-ok" style="padding-right: 5px;"></span>Approve request to submit new Found Pet</button>
+        		<span class="glyphicon glyphicon glyphicon-ok" style="padding-right: 5px;"></span>@lang('admin_pet.lost.index.table.approve')
+        	</button>
         	@endif
         </div>
 
