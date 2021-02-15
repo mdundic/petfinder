@@ -13,7 +13,7 @@
     </div>
     <div class="row">
     	<div class="col-xs-4">
-    		<img src="{{ asset(config('filesystems.disks.public.path')) . $pet->picture }}" width="100%">
+    		<img src="{{ asset(config('filesystems.disks.public.path')) . '/' . $pet->picture }}" width="100%">
     	</div>
 
     	<div class="col-xs-8">
@@ -82,7 +82,7 @@
     	        		<span class="glyphicon glyphicon glyphicon-ok" style="padding-right: 5px;"></span>
     	        			@lang('admin_pet.lost.index.table.mark_as_found')
     	        	</button>
-    			</form>        		
+    			</form>
         	@endif
         	@if( $pet->is_published === false )
             	<form method="POST" action="{{ route('admin-lost-pet-approve', $pet->id) }}" id='approve-lost-pet-form'>
