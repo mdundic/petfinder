@@ -184,6 +184,8 @@ function searchLostPets() {
             $('#lost-pets-portfolio').removeAttr('hidden');
             $('#lost-pets-portfolio #portfolio-no-results').attr("hidden",true);
             $('#lost-pets-portfolio #portfolio-found').attr("hidden",true);
+            $('#lost-pets-portfolio #portfolio-lost-pet-added').attr("hidden",true);
+            $('#found-pets-portfolio').attr("hidden",true);
 
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#lost-pets-portfolio").offset().top
@@ -229,7 +231,8 @@ function searchFoundPets() {
             $('#found-pets-portfolio').removeAttr('hidden');
             $('#found-pets-portfolio #portfolio-no-results').attr("hidden",true);
             $('#found-pets-portfolio #portfolio-found').attr("hidden",true);
-            $('#lost-pets-portfolio #portfolio-lost-pet-added').attr("hidden",true);
+            $('#found-pets-portfolio #portfolio-found-pet-added').attr("hidden",true);
+            $('#lost-pets-portfolio').attr("hidden",true);
 
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#found-pets-portfolio").offset().top
@@ -357,6 +360,11 @@ function addLostPet() {
             $('#lost-pets-portfolio #portfolio-lost-pet-added').removeAttr('hidden');
             $('#lost-pets-portfolio #portfolio-no-results').attr("hidden",true);
             $('#lost-pets-portfolio #portfolio-found').attr("hidden",true);
+            $('#lost-pets-portfolio #portfolio-wrapper').html('');
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#lost-pets-portfolio").offset().top
+            }, 1000);
         },
         error: function(response) {
             var errors = handleErrorResponse(response);
