@@ -375,6 +375,67 @@ function addLostPet() {
     });
 }
 
+// Add found pet
+function addFoundPet() {
+    $('#add-found-pet-errors').html('');
+    $('#add-found-pet-errors').attr("hidden",true);
+
+    var type = $('#add_found_pet_types').find(":selected:enabled").val();
+    var size = $('#add_found_pet_sizes').find(":selected:enabled").val();
+    var color = $('#add_found_pet_colors').find(":selected:enabled").val();
+    var location = $('#add_found_locations').find(":selected:enabled").val();
+    var found_at = $('#add_found_at').val();
+    var name = $('#add_found_name').val();
+    var breed = $('#add_found_breed').val();
+    var contact_phone = $('#add_found_contact_phone').val();
+    var description = $('#add_found_description').val();
+    var picture = $('#upload')[0].files[0];
+
+    formData = new FormData();
+
+    formData.append('type', type);
+    formData.append('size', size);
+    formData.append('color', color);
+    formData.append('location', location);
+    formData.append('found_at', found_at);
+    formData.append('name', name);
+    formData.append('breed', breed);
+    formData.append('contact_phone', contact_phone);
+    formData.append('description', description);
+    formData.append('picture', picture);
+
+    includeCsrfInAjaxHeader();
+
+    $.ajax({
+        url: API.url.add_found_pet,
+        type: 'POST',
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function() {
+            $('#add-found-pet').modal('hide');
+
+            resetAddFoundPetModal();
+
+            $('#found-pets-portfolio #portfolio-found-pet-added').removeAttr('hidden');
+            $('#found-pets-portfolio #portfolio-no-results').attr("hidden",true);
+            $('#found-pets-portfolio #portfolio-found').attr("hidden",true);
+            $('#found-pets-portfolio #portfolio-wrapper').html('');
+
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#found-pets-portfolio").offset().top
+            }, 1000);
+        },
+        error: function(response) {
+            var errors = handleErrorResponse(response);
+
+            $('#add-found-pet-errors').html(errors);
+            $('#add-found-pet-errors').removeAttr('hidden');
+        }
+    });
+}
+
 // handle error response
 function handleErrorResponse(response) {
     response = JSON.parse(response.responseText);
@@ -391,7 +452,7 @@ function handleErrorResponse(response) {
     return errors;
 }
 
-// Reset search results list
+// Reset add lost pet modal
 function resetAddLostPetModal() {
     $('#add_lost_pet_types').val("default");
     $('#add_lost_pet_sizes').val("default");
@@ -402,6 +463,21 @@ function resetAddLostPetModal() {
     $('#add_lost_breed').val('');
     $('#add_lost_contact_phone').val('');
     $('#add_lost_description').val('');
+    $('#upload-label').text('File name:');
+    $("#upload").val(null);
+}
+
+// Reset add found pet modal
+function resetAddFoundPetModal() {
+    $('#add_found_pet_types').val("default");
+    $('#add_found_pet_sizes').val("default");
+    $('#add_found_pet_colors').val("default");
+    $('#add_found_locations').val("default");
+    $('#add_found_at').val('');
+    $('#add_found_name').val('');
+    $('#add_found_breed').val('');
+    $('#add_found_contact_phone').val('');
+    $('#add_found_description').val('');
     $('#upload-label').text('File name:');
     $("#upload").val(null);
 }

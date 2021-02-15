@@ -26,6 +26,7 @@
                     search_lost_pets: '{{ route('api-pets-lost-search') }}',
                     search_found_pets: '{{ route('api-pets-found-search') }}',
                     add_lost_pet: '{{ route('api-pets-lost-add') }}',
+                    add_found_pet: '{{ route('api-pets-found-add') }}',
                 }
             }
         </script>
