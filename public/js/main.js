@@ -166,7 +166,15 @@ function searchLostPets() {
     var type = $('#lost_pet_types').find(":selected:enabled").val();
     var size = $('#lost_pet_sizes').find(":selected:enabled").val();
     var color = $('#lost_pet_colors').find(":selected:enabled").val();
-    var location = $('#lost_locations').find(":selected:enabled").val();
+    var location = $('#lost_pet_locations').find(":selected:enabled").val();
+
+    var params = new Object;
+    params['type'] = type;
+    params['size'] = size;
+    params['color'] = color;
+    params['location'] = location;
+
+    updateBrowserUrl('search=lost_pet', params)
 
     includeCsrfInAjaxHeader();
 
@@ -213,7 +221,15 @@ function searchFoundPets() {
     var type = $('#found_pet_types').find(":selected:enabled").val();
     var size = $('#found_pet_sizes').find(":selected:enabled").val();
     var color = $('#found_pet_colors').find(":selected:enabled").val();
-    var location = $('#found_locations').find(":selected:enabled").val();
+    var location = $('#found_pet_locations').find(":selected:enabled").val();
+
+    var params = new Object;
+    params['type'] = type;
+    params['size'] = size;
+    params['color'] = color;
+    params['location'] = location;
+
+    updateBrowserUrl('search=found_pet', params)
 
     includeCsrfInAjaxHeader();
 
@@ -269,11 +285,13 @@ function resetSearch() {
     $('#lost_pet_types').val("default");
     $('#lost_pet_sizes').val("default");
     $('#lost_pet_colors').val("default");
-    $('#lost_locations').val("default");
+    $('#lost_pet_locations').val("default");
     $('#found_pet_types').val("default");
     $('#found_pet_sizes').val("default");
     $('#found_pet_colors').val("default");
-    $('#found_locations').val("default");
+    $('#found_pet_locations').val("default");
+
+    resetBrowserUrl()
 }
 
 // Get one box with pet sumary info
@@ -480,4 +498,57 @@ function resetAddFoundPetModal() {
     $('#add_found_description').val('');
     $('#upload-label').text('File name:');
     $("#upload").val(null);
+}
+
+// get search params from URL and prepopulate search modals
+jQuery(document).ready(function ($) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const search = urlParams.get('search');
+    const type = urlParams.get('type');
+    const size = urlParams.get('size');
+    const color = urlParams.get('color');
+    const location = urlParams.get('location');
+
+    if (type) {
+        $('#' + search + '_types').val(type);
+    }
+
+    if (size) {
+        $('#' + search + '_sizes').val(size);
+    }
+
+    if (color) {
+        $('#' + search + '_colors').val(color);
+    }
+
+    if (location) {
+        $('#' + search + '_locations').val(location);
+    }
+
+    if (search == "lost_pet") {
+        searchLostPets()
+    }
+
+    if (search == "found_pet") {
+        searchFoundPets()
+    }
+});
+
+// add baseQueryString and param=value array on the current url
+function updateBrowserUrl(baseQueryString, params) {
+    resetBrowserUrl();
+
+    var queryString = '';
+    for (let key in params) {
+        if (params[key] !== undefined) {
+            queryString += "&" + key + "=" + params[key]
+        }
+    }
+
+    window.history.pushState({}, null, window.location.href + '?' + baseQueryString + queryString);
+}
+
+// reset the current url and remove the query string
+function resetBrowserUrl() {
+    window.history.pushState({}, null, window.location.href.split('?')[0]);
 }

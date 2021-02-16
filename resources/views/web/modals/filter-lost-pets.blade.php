@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-6 search-filter">
                         <!-- Town -->
-                        <select class="custom-select" id='lost_locations'>
+                        <select class="custom-select" id='lost_pet_locations'>
                             <option selected disabled value="default">@lang('dictionary.hero.location.select')</option>
                             @foreach ($locations as $location)
                                 <option value="{{ $location }}">@lang('dictionary.hero.location.' . $location)</option>
